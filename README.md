@@ -237,7 +237,7 @@ cron.example           paste-into-crontab snippets for scheduled runs
 
 **126 tests, 126 passing across 16 suites.** ~7,500 LOC across `src/`. Verified
 end-to-end on **4 commerce sites** (3 Fynd assignment sites + nykaa-india
-added as a worked onboarding exercise): **8/8 critical flows green in 233s**.
+added as a worked onboarding exercise): **8/8 critical flows green in 217s; all 4 sites status `passed`**.
 PatternAnalyzer precision (hard mode, 10-seed sweep, 15% noise): median 1.00,
 worst-seed 0.67 (see `docs/PLAYBOOK.md §12.5`). Adding the 4th site
 (nykaa-india) took ~25 min across 4 iterations of the escalation ladder

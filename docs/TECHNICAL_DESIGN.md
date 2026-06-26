@@ -178,7 +178,7 @@ Full model in `SCALE.md`. Headlines:
 - **Compute:** ~$2 in *spot CPU* per full 1,000-site sweep. Excludes
   BrowserStack real-device matrix (separate contract) and LLM token cost on a
   cold-start fleet (steady state is ~0 because the profile cache wins).
-- **Measured today:** 233s for 4 sites (3 Fynd assignment sites + nykaa.com
+- **Measured today:** 217s for 4 sites (3 Fynd assignment sites + nykaa.com
   added live) end-to-end; throughput numbers above 4 sites are projected from
   the per-site model, not load-tested.
 - **LLM:** a one-time per-site learning tax, ~0 in steady state. Bounded by a
@@ -199,10 +199,10 @@ remediation, HTML/JUnit/JSON reporting. 10 unit tests pass
 sites (`pizzahut.com.my`, `sephora.in`, `shopnexusone.com`) plus `nykaa.com`
 added live as a worked onboarding exercise — **8/8 critical flows green in
 233 seconds** on a real machine with Chromium installed. Latest rendered
-report: `reports/run-1782397895689/report.html`. See `docs/PLAYBOOK.md §6`
+report: `reports/run-1782451200876/report.html`. See `docs/PLAYBOOK.md §6`
 for the case-study of adding the 4th site across 4 escalation iterations.
 
-**Honest gap:** the per-site time is **~58 seconds** on the demo run (233s ÷ 4
+**Honest gap:** the per-site time is **~54 seconds** on the demo run (217s ÷ 4
 sites). The throughput model in `SCALE.md` assumes ~12s warm + ~14s full —
 real-world variance, anti-bot waits (Pizza Hut MY and Nykaa both need 4s
 homepage warm-ups), and headed-mode rendering pull this higher. Steady-state

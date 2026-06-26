@@ -42,7 +42,7 @@ default.
 - **~2 min** for a 50-changed-sites deploy sweep at 50 concurrency (the realistic deploy gate path).
 - **~10 min** wall-clock for a full 1,000-site sweep at 50 concurrency; **~2 min** when 100 concurrent browsers are available.
 - **~$2** *compute* per full 1,000-site sweep at spot pricing. Excludes BrowserStack real-device contract and LLM token cost on cold-start fleets (steady state is ~0 LLM calls because the profile cache wins).
-- **End-to-end validated** on **4 commerce sites** — the 3 Fynd assignment sites (`pizzahut.com.my`, `sephora.in`, `shopnexusone.com`) plus `nykaa.com` added live as a worked onboarding exercise — **8/8 critical flows green in 233s**. **Not yet load-tested above 4 sites** — the throughput numbers above are projected from the per-site model in `SCALE.md`.
+- **End-to-end validated** on **4 commerce sites** — the 3 Fynd assignment sites (`pizzahut.com.my`, `sephora.in`, `shopnexusone.com`) plus `nykaa.com` added live as a worked onboarding exercise — **8/8 critical flows green in 217s, all 4 sites status `passed`**. **Not yet load-tested above 4 sites** — the throughput numbers above are projected from the per-site model in `SCALE.md`.
 
 ### The boundary I drew (deliberately)
 

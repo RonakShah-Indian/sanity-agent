@@ -1,6 +1,6 @@
 # Autonomous Sanity Agent for Fynd — One-Page Brief
 
-**Author:** Ronak Shah (Director of QA candidate) · **Date:** 2026-06-25
+**Author:** Ronak Shah (Director of QA candidate) · **Date:** 2026-06-26
 
 ## The problem
 
@@ -24,7 +24,7 @@ a site fights the resolver. Whatever rung wins is cached, so the system
 | Capability | Status |
 |---|---|
 | 10 design phases shipped | Discovery → Classification → Journey → Execution → Validation → Visual → Self-heal → Learning → Reporting → Production (Docker + CI) |
-| End-to-end demo | **4 commerce sites, 8/8 critical flows green in 233s** (pizzahut.com.my, sephora.in, shopnexusone.com, nykaa.com) |
+| End-to-end demo | **4 commerce sites, 8/8 critical flows green in 217s** (pizzahut.com.my, sephora.in, shopnexusone.com, nykaa.com) |
 | Test discipline | **126 tests, 16 suites, all green** — including a hard-mode PatternAnalyzer precision benchmark (median 1.00, worst-seed 0.67 across 10 RNG seeds) |
 | Bug reporting | Real POST adapters for Jira/Slack/Linear/Webhook — env-gated, dry-run by default, flip `BUG_DRY_RUN=false` to ship live |
 | Operations | SLO instrumentation (`src/slo-tracker.js`), profile-rollback CLI for bad self-heals, full Operations chapter (PLAYBOOK §12) |
@@ -43,7 +43,7 @@ a site fights the resolver. Whatever rung wins is cached, so the system
   requires two weeks of observed precision on a real fleet before paging.
 - BrowserStack real-device matrix needs credentials wired.
 
-## What a CTO would do with this
+## What a we would do with this
 
 1. **Hire and ship the prototype** for the top-20 storefronts in week 1
 2. Run the **2-week PatternAnalyzer observation window** in parallel to
@@ -66,7 +66,7 @@ a site fights the resolver. Whatever rung wins is cached, so the system
 1. `docs/EXECUTIVE_BRIEF.md` (60s read)
 2. `docs/PLAYBOOK.md §1` (what it is, what costs config), `§4` (the 6-rung
    ladder), `§6` (nykaa case study), `§12` (Ops + SLOs)
-3. `reports/run-1782397895689/report.html` (live demo report — open in browser)
+3. `reports/run-1782451200876/report.html` (live demo report — open in browser)
 4. `node test/patterns-precision.test.js` (run the precision benchmark yourself)
 
 **Full operator guide:** `docs/PLAYBOOK.md` (~900 lines, 11 Mermaid diagrams)
