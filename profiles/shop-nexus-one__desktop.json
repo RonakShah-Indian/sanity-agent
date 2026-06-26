@@ -6,8 +6,8 @@
       "selector": "a[href='/cart/bag']:visible",
       "strategy": "override",
       "confidence": 1,
-      "hits": 20,
-      "misses": 0
+      "hits": 28,
+      "misses": 1
     },
     "search_box": {
       "selector": "role=textbox[name=/search/i]",
@@ -31,5 +31,5 @@
       "misses": 0
     }
   },
-  "updatedAt": "2026-06-25T14:30:37.784Z"
+  "updatedAt": "2026-06-26T05:19:06.932Z"
 }

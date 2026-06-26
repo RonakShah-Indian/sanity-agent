@@ -46,71 +46,63 @@
   .sev-high{border-left:3px solid #dc2626}.sev-medium{border-left:3px solid #d97706}.sev-low{border-left:3px solid #3b82f6}.sev-info{border-left:3px solid #6b7280}
   code{background:#0b1220;padding:1px 6px;border-radius:4px;color:#7dd3fc}
   .bar{height:8px;background:#334155;border-radius:99px;overflow:hidden;margin-top:8px}
-  .bar>div{height:100%;background:#16a34a;width:0%}
+  .bar>div{height:100%;background:#16a34a;width:100%}
 </style></head><body>
   <h1>Autonomous Sanity Agent — Run Report</h1>
-  <div class="sub">2026-06-25T14:31:35.686Z · 4 sites · concurrency 1 · 233.0s wall · 1/min throughput</div>
+  <div class="sub">2026-06-26T05:20:00.872Z · 4 sites · concurrency 1 · 216.8s wall · 1.1/min throughput</div>
   <div class="cards">
-    <div class="card"><div class="n">0%</div><div class="l">Pass rate</div><div class="bar"><div></div></div></div>
-    <div class="card"><div class="n" style="color:#16a34a">0</div><div class="l">Passed</div></div>
-    <div class="card"><div class="n" style="color:#d97706">4</div><div class="l">Degraded</div></div>
+    <div class="card"><div class="n">100%</div><div class="l">Pass rate</div><div class="bar"><div></div></div></div>
+    <div class="card"><div class="n" style="color:#16a34a">4</div><div class="l">Passed</div></div>
+    <div class="card"><div class="n" style="color:#d97706">0</div><div class="l">Degraded</div></div>
     <div class="card"><div class="n" style="color:#dc2626">0</div><div class="l">Failed</div></div>
     <div class="card"><div class="n" style="color:#dc2626">0</div><div class="l">Errored</div></div>
     <div class="card"><div class="n" style="color:#6b7280">0</div><div class="l">Deferred</div></div>
   </div>
   
-  <div class="impact-panel">
-    <div class="impact-headline">
-      <div><div class="ih-n">0 INR</div><div class="ih-l">Realised loss / hr</div></div>
-      <div><div class="ih-n" style="color:#94a3b8">₹2.95 L</div><div class="ih-l">At risk / hr (if other flows break)</div></div>
-    </div>
-    <div class="impact-grid"></div>
-  </div>
+  
   <div class="bd" style="margin-bottom:18px">
     <div class="bd-h">Third-party dependencies — ⚠ degradation detected</div>
-    <div class="bd-row"><span><b>Stripe</b> <span class="muted">12ms</span></span><span style="color:#6b7280">● unknown</span></div><div class="bd-row"><span><b>Razorpay</b> <span class="muted">86ms</span></span><span style="color:#6b7280">● unknown</span></div><div class="bd-row"><span><b>Algolia</b> <span class="muted">394ms</span></span><span style="color:#6b7280">● unknown</span></div><div class="bd-row"><span><b>Cloudflare</b> <span class="muted">514ms</span></span><span style="color:#dc2626">● minor</span></div><div class="bd-row"><span><b>Cloudinary</b> <span class="muted">517ms</span></span><span style="color:#16a34a">● operational</span></div><div class="bd-row"><span><b>AWS</b> <span class="muted">1261ms</span></span><span style="color:#16a34a">● operational</span></div>
+    <div class="bd-row"><span><b>Stripe</b> <span class="muted">120ms</span></span><span style="color:#6b7280">● unknown</span></div><div class="bd-row"><span><b>Razorpay</b> <span class="muted">188ms</span></span><span style="color:#6b7280">● unknown</span></div><div class="bd-row"><span><b>Algolia</b> <span class="muted">507ms</span></span><span style="color:#6b7280">● unknown</span></div><div class="bd-row"><span><b>Cloudflare</b> <span class="muted">637ms</span></span><span style="color:#dc2626">● minor</span></div><div class="bd-row"><span><b>AWS</b> <span class="muted">632ms</span></span><span style="color:#16a34a">● operational</span></div><div class="bd-row"><span><b>Cloudinary</b> <span class="muted">802ms</span></span><span style="color:#16a34a">● operational</span></div>
   </div>
   <table><thead><tr><th>Site</th><th>Status</th><th>Core business</th><th>Locale</th><th>Flows</th><th>Impact / hr</th><th>Learned profile</th><th>Time</th></tr></thead>
   <tbody><tr>
         <td><b>pizzahut-malaysia</b><div class="muted">https://pizzahut.com.my/</div></td>
-        <td><span class="status" style="color:#d97706">●</span> degraded</td>
+        <td><span class="status" style="color:#16a34a">●</span> passed</td>
         <td><b>Food ordering / delivery (location-gated)</b><div class="muted">food_delivery · 1 · heuristic · full</div></td>
         <td>en</td>
         <td><span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Browse &amp; Add To Cart: passed <span class="vp">desktop</span></span> <span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Checkout (up to payment): passed <span class="vp">desktop</span></span></td>
-        <td><div class="muted">₹7.2K /hr at risk</div></td>
+        <td><span class="muted">—</span></td>
         <td class="muted">2 learned · conf 0.25</td>
-        <td>60.6s</td>
-      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 2668ms · CLS 0.394 · INP 40ms</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770655">vitals.lcp: LCP 2668ms &gt; 2500ms</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770655">vitals.cls: CLS 0.394 &gt; 0.1</span></div><div style="color:#dc2626">visual desktop: diff 48.39% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#60a5fa">⟐ Deployment diff:</span> first run — baseline established, no comparison yet.</div></td></tr>
+        <td>61.0s</td>
+      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 2748ms · CLS 0.394 · INP 40ms</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770655">vitals.lcp: LCP 2748ms &gt; 2500ms</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770655">vitals.cls: CLS 0.394 &gt; 0.1</span></div><div style="color:#dc2626">visual desktop: diff 48.39% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#16a34a">⟐ Deployment diff:</span> no changes vs baseline (2026-06-26T04:24).</div></td></tr>
 <tr>
         <td><b>sephora-india</b><div class="muted">https://sephora.in/products?q=lipstick</div></td>
-        <td><span class="status" style="color:#d97706">●</span> degraded</td>
-        <td><b>Fashion / Lifestyle e-commerce</b><div class="muted">fashion_retail · 0.8 · llm · full</div></td>
+        <td><span class="status" style="color:#16a34a">●</span> passed</td>
+        <td><b>Fashion / Lifestyle e-commerce</b><div class="muted">fashion_retail · 1 · llm · full</div></td>
         <td>en · INR</td>
         <td><span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Browse &amp; Add To Cart: passed <span class="vp">desktop</span></span> <span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Checkout (up to payment): passed <span class="vp">desktop</span></span></td>
-        <td><div class="muted">₹15.0K /hr at risk</div></td>
+        <td><span class="muted">—</span></td>
         <td class="muted">3 learned · conf 0.93</td>
-        <td>40.3s</td>
-      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 1456ms · CLS 0.0752 · INP 40ms</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">pageerror: 5 uncaught JS exception(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">console: 10 console error(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">http: 5 4xx/5xx response(s)</span></div><div style="color:#dc2626">visual desktop: diff 56.49% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#dc2626">⟐ Deployment diff — 4 change(s), severity high</span> (vs 2026-06-24T10:11)<div class="chg sev-info">checkout: failed -&gt; passed</div><div class="chg sev-high">9 interactive element(s) disappeared since last deploy<div class="muted">e.g. a:stores &amp; events, a:wishlist, a:2
-
-bag, a:2, input:search for brands and pr, button:</div></div><div class="chg sev-low">20 new interactive element(s) appeared<div class="muted">e.g. a:https://sephora.in/colle, input:enter mobile number, input:on, a:terms of service,, a:privacy policy,, a:beauty pass loyalty prog</div></div><div class="chg sev-medium">Currency changed null -&gt; INR</div></div></td></tr>
+        <td>39.9s</td>
+      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 1564ms · CLS 0.0752 · INP 40ms</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">pageerror: 5 uncaught JS exception(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">console: 11 console error(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">http: 5 4xx/5xx response(s)</span></div><div style="color:#dc2626">visual desktop: diff 56.49% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#16a34a">⟐ Deployment diff:</span> no changes vs baseline (2026-06-26T05:10).</div></td></tr>
 <tr>
         <td><b>shop-nexus-one</b><div class="muted">https://shopnexusone.com/</div></td>
-        <td><span class="status" style="color:#d97706">●</span> degraded</td>
+        <td><span class="status" style="color:#16a34a">●</span> passed</td>
         <td><b>Fashion / Lifestyle e-commerce</b><div class="muted">fashion_retail · 1 · heuristic · full</div></td>
         <td>en · INR</td>
         <td><span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Add To Cart: passed <span class="vp">desktop</span></span> <span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Checkout (up to payment): passed <span class="vp">desktop</span></span></td>
-        <td><div class="muted">₹86.3K /hr at risk</div></td>
+        <td><span class="muted">—</span></td>
         <td class="muted">4 learned · conf 0.78</td>
-        <td>75.7s</td>
-      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 1924ms · CLS 0.009 · INP 56ms</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">console: 1 console error(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">http: 1 4xx/5xx response(s)</span></div><div style="color:#dc2626">visual desktop: diff 65.85% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#60a5fa">⟐ Deployment diff:</span> first run — baseline established, no comparison yet.</div></td></tr>
+        <td>63.6s</td>
+      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 1620ms · CLS 0.009 · INP 72ms</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">console: 3 console error(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">http: 1 4xx/5xx response(s)</span></div><div style="color:#dc2626">visual desktop: diff 65.85% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#16a34a">⟐ Deployment diff:</span> no changes vs baseline (2026-06-26T05:11).</div></td></tr>
 <tr>
         <td><b>nykaa-india</b><div class="muted">https://www.nykaa.com/</div></td>
-        <td><span class="status" style="color:#d97706">●</span> degraded</td>
+        <td><span class="status" style="color:#16a34a">●</span> passed</td>
         <td><b>Multi-seller marketplace</b><div class="muted">marketplace · 1 · heuristic · full</div></td>
         <td>en · INR</td>
         <td><span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Add To Cart: passed <span class="vp">desktop</span></span> <span class="pill" style="background:#16a34a1a;color:#16a34a;border:1px solid #16a34a55">Checkout (up to payment): passed <span class="vp">desktop</span></span></td>
-        <td><div class="muted">₹1.86 L /hr at risk</div></td>
+        <td><span class="muted">—</span></td>
         <td class="muted">3 learned · conf 0.8</td>
-        <td>55.1s</td>
-      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 2648ms · CLS 0 · INP 24ms</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">pageerror: 1 uncaught JS exception(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">console: 5 console error(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">http: 2 4xx/5xx response(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">vitals.lcp: LCP 2648ms &gt; 2500ms</span></div><div style="color:#dc2626">visual desktop: diff 72.11% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#60a5fa">⟐ Deployment diff:</span> first run — baseline established, no comparison yet.</div></td></tr></tbody></table>
+        <td>51.5s</td>
+      </tr><tr><td colspan="8" class="telerow"><div class="tele-panel"><div class="tele-row"><b>desktop</b> · <span class="muted">vitals — LCP 1920ms · CLS 0 · INP 32ms</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">pageerror: 1 uncaught JS exception(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">console: 8 console error(s)</span> <span class="pill" style="background:#dc26261a;color:#dc2626;border:1px solid #dc262655">http: 2 4xx/5xx response(s)</span></div><div style="color:#dc2626">visual desktop: diff 72.11% ⚠ regression</div><div class="muted" style="font-size:11px">transport: local</div></div></td></tr><tr><td colspan="8" class="diffrow"><div class="diff"><span class="dh" style="color:#16a34a">⟐ Deployment diff:</span> no changes vs baseline (2026-06-26T05:12).</div></td></tr></tbody></table>
 </body></html>

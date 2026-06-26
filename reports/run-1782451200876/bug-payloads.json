@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-26T05:20:00.880Z",
+  "dryRun": true,
+  "count": 0,
+  "payloads": {
+    "jira": [],
+    "slack": [],
+    "linear": [],
+    "webhook": []
+  },
+  "posted": {}
+}

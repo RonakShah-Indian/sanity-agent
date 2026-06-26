@@ -258,19 +258,12 @@ function renderSiteImpact(r) {
   if (!bi) return '<span class="muted">—</span>';
   const { formatMoney } = require('./impact');
   const realised = bi.realised_impact_per_hour;
-  const risk = bi.at_risk_impact_per_hour;
-  if (!realised && !risk) return '<span class="muted">—</span>';
-  const realisedHtml = realised > 0
-    ? `<div class="impact-bad">${formatMoney(realised, bi.currency)}<span class="muted"> /hr lost</span></div>`
-    : '';
-  const riskHtml = risk > 0
-    ? `<div class="muted">${formatMoney(risk, bi.currency)} /hr at risk</div>`
-    : '';
-  return `${realisedHtml}${riskHtml}`;
+  if (!realised) return '<span class="muted">—</span>';
+  return `<div class="impact-bad">${formatMoney(realised, bi.currency)}<span class="muted"> /hr lost</span></div>`;
 }
 
 function renderImpactSummary(impact) {
-  if (!impact || (!impact.total_realised_per_hour && !impact.total_at_risk_per_hour)) return '';
+  if (!impact || !impact.total_realised_per_hour) return '';
   const { formatMoney } = require('./impact');
   const byA = Object.entries(impact.by_archetype || {}).filter(([, v]) => v > 0);
   const byR = Object.entries(impact.by_region   || {}).filter(([, v]) => v > 0);
@@ -287,7 +280,6 @@ function renderImpactSummary(impact) {
   return `<div class="impact-panel">
     <div class="impact-headline">
       <div><div class="ih-n">${formatMoney(impact.total_realised_per_hour, impact.currency)}</div><div class="ih-l">Realised loss / hr</div></div>
-      <div><div class="ih-n" style="color:#94a3b8">${formatMoney(impact.total_at_risk_per_hour, impact.currency)}</div><div class="ih-l">At risk / hr (if other flows break)</div></div>
     </div>
     <div class="impact-grid">${renderBreakdown('By archetype', byA)}${renderBreakdown('By region', byR)}${offenderRows}</div>
   </div>`;

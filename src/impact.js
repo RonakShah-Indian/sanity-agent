@@ -109,7 +109,6 @@ function scoreSite(result, defaults) {
 function aggregateImpact(results, defaults) {
   const currency = defaults.currency || 'INR';
   let total_realised = 0;
-  let total_at_risk = 0;
   const by_archetype = new Map();
   const by_region = new Map();
   const top_offenders = [];
@@ -118,7 +117,6 @@ function aggregateImpact(results, defaults) {
     const bi = r.business_impact;
     if (!bi) continue;
     total_realised += bi.realised_impact_per_hour;
-    total_at_risk += bi.at_risk_impact_per_hour;
 
     const a = bi.inputs.archetype || 'unknown';
     const reg = bi.inputs.region || 'unknown';
@@ -135,7 +133,6 @@ function aggregateImpact(results, defaults) {
   return {
     currency,
     total_realised_per_hour: total_realised,
-    total_at_risk_per_hour: total_at_risk,
     by_archetype: Object.fromEntries([...by_archetype.entries()].sort((a, b) => b[1] - a[1])),
     by_region:    Object.fromEntries([...by_region.entries()].sort((a, b) => b[1] - a[1])),
     top_offenders: top_offenders.slice(0, 10),

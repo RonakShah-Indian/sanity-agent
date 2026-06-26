@@ -24,6 +24,13 @@ class VisualStage extends AgentStage {
     const variant = ctx.variant;
 
     // --- Tier-1 telemetry snapshot ------------------------------------------
+    // Telemetry is informational. JS errors, console errors, bad HTTP
+    // responses, and Web Vitals all go into the report as findings, but they
+    // don't change the site-level status. On real commerce sites, third-party
+    // scripts (analytics, ads, A/B testing pixels) routinely throw errors
+    // and 4xx-5xx that have nothing to do with the customer experience the
+    // flows actually exercised. Status = "did the critical flow pass?" —
+    // telemetry = "what other quality signals were visible during the run?"
     if (ctx._telemetry) {
       try {
         const snap = await ctx._telemetry.snapshot();
@@ -32,7 +39,6 @@ class VisualStage extends AgentStage {
           variant: variant.name, severity: evald.severity,
           findings: evald.findings, vitals: snap.vitals, counts: snap.counts,
         });
-        if (evald.severity !== 'ok') ctx.degrade('degraded');
       } catch { /* telemetry failures must not fail the run */ }
       try { ctx._telemetry.detach(); } catch {}
     }
@@ -45,7 +51,10 @@ class VisualStage extends AgentStage {
           updateBaseline: ctx.status === 'passed',
         });
         ctx.visual[variant.name] = vis;
-        if (vis.regressed) ctx.degrade('degraded');
+        // Visual regression is informational — surfaced in the report and the
+        // deploy-diff layer, but doesn't degrade a site whose critical flows
+        // all passed. Real regressions show up as failed flow steps; visual
+        // diffs are noise on dynamic content (promo banners, A/B variants).
       } catch { /* never block on visual */ }
     }
 

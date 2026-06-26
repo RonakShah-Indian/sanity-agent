@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="sanity-agent" tests="8" failures="0" errors="0" time="216.82">
+    <testcase classname="pizzahut-malaysia" name="Browse &amp; Add To Cart" time="61.03"></testcase>
+    <testcase classname="pizzahut-malaysia" name="Checkout (up to payment)" time="61.03"></testcase>
+    <testcase classname="sephora-india" name="Browse &amp; Add To Cart" time="39.90"></testcase>
+    <testcase classname="sephora-india" name="Checkout (up to payment)" time="39.90"></testcase>
+    <testcase classname="shop-nexus-one" name="Add To Cart" time="63.58"></testcase>
+    <testcase classname="shop-nexus-one" name="Checkout (up to payment)" time="63.58"></testcase>
+    <testcase classname="nykaa-india" name="Add To Cart" time="51.48"></testcase>
+    <testcase classname="nykaa-india" name="Checkout (up to payment)" time="51.48"></testcase>
+</testsuite>

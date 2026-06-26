@@ -8,7 +8,14 @@
       "confidence": 0.19999999999999984,
       "hits": 6,
       "misses": 3
+    },
+    "cart_link": {
+      "selector": "text~=/cart/i",
+      "strategy": "semantic-text",
+      "confidence": 0.29999999999999993,
+      "hits": 2,
+      "misses": 1
     }
   },
-  "updatedAt": "2026-06-25T14:28:41.704Z"
+  "updatedAt": "2026-06-26T05:17:23.275Z"
 }

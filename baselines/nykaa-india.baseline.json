@@ -1,0 +1,20 @@
+{
+  "siteId": "nykaa-india",
+  "capturedAt": "2026-06-26T05:19:59.787Z",
+  "locale": {
+    "lang": "en",
+    "currency": "INR"
+  },
+  "archetype": "marketplace",
+  "flowStatus": {
+    "add_to_cart": "passed",
+    "checkout": "passed"
+  },
+  "elementSet": [
+    "input:/theme202/",
+    "input:0",
+    "input:go back to home page",
+    "input:https://www.nykaa.com/js"
+  ],
+  "timings": {}
+}

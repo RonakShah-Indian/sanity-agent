@@ -1,19 +1,18 @@
 {
   "summary": {
     "total": 4,
-    "passed": 0,
-    "degraded": 4,
+    "passed": 4,
+    "degraded": 0,
     "failed": 0,
     "errored": 0,
     "deferred": 0,
-    "durationMs": 232958,
+    "durationMs": 216821,
     "concurrency": 1,
-    "throughputPerMin": 1,
-    "generatedAt": "2026-06-25T14:31:35.686Z",
+    "throughputPerMin": 1.1,
+    "generatedAt": "2026-06-26T05:20:00.872Z",
     "impact": {
       "currency": "INR",
       "total_realised_per_hour": 0,
-      "total_at_risk_per_hour": 294750,
       "by_archetype": {
         "food_delivery": 0,
         "fashion_retail": 0,
@@ -26,48 +25,48 @@
       "top_offenders": []
     },
     "third_party": {
-      "generatedAt": "2026-06-25T14:31:35.684Z",
+      "generatedAt": "2026-06-26T05:20:00.870Z",
       "providers": {
         "stripe": {
           "label": "Stripe",
           "status": "unknown",
           "error": "fetch failed",
-          "latencyMs": 12
+          "latencyMs": 120
         },
         "razorpay": {
           "label": "Razorpay",
           "status": "unknown",
           "error": "Unexpected token '<', \" <!DOCTYPE \"... is not valid JSON",
-          "latencyMs": 86
+          "latencyMs": 188
         },
         "algolia": {
           "label": "Algolia",
           "status": "unknown",
           "error": "Unexpected token '<', \"<!doctype \"... is not valid JSON",
-          "latencyMs": 394
+          "latencyMs": 507
         },
         "cloudflare": {
           "label": "Cloudflare",
-          "latencyMs": 514,
+          "latencyMs": 637,
           "status": "minor",
           "description": "Minor Service Outage"
-        },
-        "cloudinary": {
-          "label": "Cloudinary",
-          "latencyMs": 517,
-          "status": "operational",
-          "description": "All Systems Operational"
         },
         "aws": {
           "label": "AWS",
           "status": "operational",
-          "latencyMs": 1261
+          "latencyMs": 632
+        },
+        "cloudinary": {
+          "label": "Cloudinary",
+          "latencyMs": 802,
+          "status": "operational",
+          "description": "All Systems Operational"
         }
       },
       "any_degraded": true
     },
     "patterns": {
-      "generatedAt": "2026-06-25T14:31:35.689Z",
+      "generatedAt": "2026-06-26T05:20:00.876Z",
       "window_ms": 3600000,
       "merchants_in_window": 4,
       "patterns": []
@@ -83,9 +82,9 @@
     {
       "site": "pizzahut-malaysia",
       "url": "https://pizzahut.com.my/",
-      "startedAt": "2026-06-25T14:27:42.729Z",
-      "finishedAt": "2026-06-25T14:28:43.350Z",
-      "status": "degraded",
+      "startedAt": "2026-06-26T05:16:24.052Z",
+      "finishedAt": "2026-06-26T05:17:25.078Z",
+      "status": "passed",
       "error": null,
       "locale": {
         "lang": "en",
@@ -179,7 +178,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 51888,
+          "timingMs": 52220,
           "viewport": "desktop"
         },
         {
@@ -205,7 +204,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 4971,
+          "timingMs": 4850,
           "viewport": "desktop"
         }
       ],
@@ -240,7 +239,7 @@
             {
               "kind": "vitals.lcp",
               "severity": "medium",
-              "detail": "LCP 2668ms > 2500ms"
+              "detail": "LCP 2748ms > 2500ms"
             },
             {
               "kind": "vitals.cls",
@@ -249,11 +248,11 @@
             }
           ],
           "vitals": {
-            "lcp": 2668,
+            "lcp": 2748,
             "cls": 0.394,
             "inp": 40,
-            "fcp": 536,
-            "ttfb": 146
+            "fcp": 364,
+            "ttfb": 49
           },
           "counts": {
             "consoleErrors": 0,
@@ -273,10 +272,12 @@
       },
       "videos": {},
       "diff": {
-        "firstRun": true,
+        "firstRun": false,
+        "baselineAt": "2026-06-26T04:24:43.825Z",
+        "changeCount": 0,
+        "severity": "none",
         "changes": [],
-        "severity": "info",
-        "baselineUpdated": false
+        "baselineUpdated": true
       },
       "transport": "local",
       "region": "MY",
@@ -284,7 +285,7 @@
       "traffic_per_hour": null,
       "aov": null,
       "currency": null,
-      "durationMs": 60621,
+      "durationMs": 61026,
       "business_impact": {
         "currency": "INR",
         "realised_impact_per_hour": 0,
@@ -318,9 +319,9 @@
     {
       "site": "sephora-india",
       "url": "https://sephora.in/products?q=lipstick",
-      "startedAt": "2026-06-25T14:28:43.350Z",
-      "finishedAt": "2026-06-25T14:29:23.617Z",
-      "status": "degraded",
+      "startedAt": "2026-06-26T05:17:25.079Z",
+      "finishedAt": "2026-06-26T05:18:04.981Z",
+      "status": "passed",
       "error": null,
       "locale": {
         "lang": "en",
@@ -339,7 +340,7 @@
       "business": {
         "archetype": "fashion_retail",
         "label": "Fashion / Lifestyle e-commerce",
-        "confidence": 0.8,
+        "confidence": 1,
         "method": "llm"
       },
       "flows": [
@@ -398,7 +399,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 23215,
+          "timingMs": 22407,
           "viewport": "desktop"
         },
         {
@@ -439,7 +440,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 3860,
+          "timingMs": 3817,
           "viewport": "desktop"
         }
       ],
@@ -479,7 +480,7 @@
             {
               "kind": "console",
               "severity": "medium",
-              "detail": "10 console error(s)"
+              "detail": "11 console error(s)"
             },
             {
               "kind": "http",
@@ -488,14 +489,14 @@
             }
           ],
           "vitals": {
-            "lcp": 1456,
+            "lcp": 1564,
             "cls": 0.0752,
             "inp": 40,
-            "fcp": 256,
-            "ttfb": 106
+            "fcp": 348,
+            "ttfb": 127
           },
           "counts": {
-            "consoleErrors": 10,
+            "consoleErrors": 11,
             "pageErrors": 5,
             "badResponses": 5
           }
@@ -513,55 +514,11 @@
       "videos": {},
       "diff": {
         "firstRun": false,
-        "baselineAt": "2026-06-24T10:11:18.435Z",
-        "changeCount": 4,
-        "severity": "high",
-        "changes": [
-          {
-            "type": "flow-status",
-            "flow": "checkout",
-            "from": "failed",
-            "to": "passed",
-            "severity": "info",
-            "note": "checkout: failed -> passed"
-          },
-          {
-            "type": "structure-removed",
-            "count": 9,
-            "examples": [
-              "a:stores & events",
-              "a:wishlist",
-              "a:2\n\nbag",
-              "a:2",
-              "input:search for brands and pr",
-              "button:"
-            ],
-            "severity": "high",
-            "note": "9 interactive element(s) disappeared since last deploy"
-          },
-          {
-            "type": "structure-added",
-            "count": 20,
-            "examples": [
-              "a:https://sephora.in/colle",
-              "input:enter mobile number",
-              "input:on",
-              "a:terms of service,",
-              "a:privacy policy,",
-              "a:beauty pass loyalty prog"
-            ],
-            "severity": "low",
-            "note": "20 new interactive element(s) appeared"
-          },
-          {
-            "type": "currency-change",
-            "from": null,
-            "to": "INR",
-            "severity": "medium",
-            "note": "Currency changed null -> INR"
-          }
-        ],
-        "baselineUpdated": false
+        "baselineAt": "2026-06-26T05:10:40.382Z",
+        "changeCount": 0,
+        "severity": "none",
+        "changes": [],
+        "baselineUpdated": true
       },
       "transport": "local",
       "region": "IN",
@@ -569,7 +526,7 @@
       "traffic_per_hour": null,
       "aov": null,
       "currency": null,
-      "durationMs": 40267,
+      "durationMs": 39902,
       "business_impact": {
         "currency": "INR",
         "realised_impact_per_hour": 0,
@@ -603,9 +560,9 @@
     {
       "site": "shop-nexus-one",
       "url": "https://shopnexusone.com/",
-      "startedAt": "2026-06-25T14:29:23.617Z",
-      "finishedAt": "2026-06-25T14:30:39.350Z",
-      "status": "degraded",
+      "startedAt": "2026-06-26T05:18:04.981Z",
+      "finishedAt": "2026-06-26T05:19:08.558Z",
+      "status": "passed",
       "error": null,
       "locale": {
         "lang": "en",
@@ -683,7 +640,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 18775,
+          "timingMs": 18629,
           "viewport": "desktop"
         },
         {
@@ -709,7 +666,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 3985,
+          "timingMs": 3768,
           "viewport": "desktop"
         }
       ],
@@ -746,7 +703,7 @@
             {
               "kind": "console",
               "severity": "medium",
-              "detail": "1 console error(s)"
+              "detail": "3 console error(s)"
             },
             {
               "kind": "http",
@@ -755,14 +712,14 @@
             }
           ],
           "vitals": {
-            "lcp": 1924,
+            "lcp": 1620,
             "cls": 0.009,
-            "inp": 56,
-            "fcp": 1308,
-            "ttfb": 1010
+            "inp": 72,
+            "fcp": 1084,
+            "ttfb": 652
           },
           "counts": {
-            "consoleErrors": 1,
+            "consoleErrors": 3,
             "pageErrors": 0,
             "badResponses": 1
           }
@@ -779,10 +736,12 @@
       },
       "videos": {},
       "diff": {
-        "firstRun": true,
+        "firstRun": false,
+        "baselineAt": "2026-06-26T05:11:51.831Z",
+        "changeCount": 0,
+        "severity": "none",
         "changes": [],
-        "severity": "info",
-        "baselineUpdated": false
+        "baselineUpdated": true
       },
       "transport": "local",
       "region": "IN",
@@ -790,7 +749,7 @@
       "traffic_per_hour": null,
       "aov": null,
       "currency": null,
-      "durationMs": 75733,
+      "durationMs": 63577,
       "business_impact": {
         "currency": "INR",
         "realised_impact_per_hour": 0,
@@ -824,9 +783,9 @@
     {
       "site": "nykaa-india",
       "url": "https://www.nykaa.com/",
-      "startedAt": "2026-06-25T14:30:39.351Z",
-      "finishedAt": "2026-06-25T14:31:34.405Z",
-      "status": "degraded",
+      "startedAt": "2026-06-26T05:19:08.563Z",
+      "finishedAt": "2026-06-26T05:20:00.043Z",
+      "status": "passed",
       "error": null,
       "locale": {
         "lang": "en",
@@ -896,7 +855,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 41753,
+          "timingMs": 41325,
           "viewport": "desktop"
         },
         {
@@ -922,7 +881,7 @@
             }
           ],
           "status": "passed",
-          "timingMs": 5094,
+          "timingMs": 4249,
           "viewport": "desktop"
         }
       ],
@@ -960,28 +919,23 @@
             {
               "kind": "console",
               "severity": "medium",
-              "detail": "5 console error(s)"
+              "detail": "8 console error(s)"
             },
             {
               "kind": "http",
               "severity": "high",
               "detail": "2 4xx/5xx response(s)"
-            },
-            {
-              "kind": "vitals.lcp",
-              "severity": "medium",
-              "detail": "LCP 2648ms > 2500ms"
             }
           ],
           "vitals": {
-            "lcp": 2648,
+            "lcp": 1920,
             "cls": 0,
-            "inp": 24,
-            "fcp": 2428,
-            "ttfb": 445
+            "inp": 32,
+            "fcp": 1668,
+            "ttfb": 555
           },
           "counts": {
-            "consoleErrors": 5,
+            "consoleErrors": 8,
             "pageErrors": 1,
             "badResponses": 2
           }
@@ -998,10 +952,12 @@
       },
       "videos": {},
       "diff": {
-        "firstRun": true,
+        "firstRun": false,
+        "baselineAt": "2026-06-26T05:12:45.193Z",
+        "changeCount": 0,
+        "severity": "none",
         "changes": [],
-        "severity": "info",
-        "baselineUpdated": false
+        "baselineUpdated": true
       },
       "transport": "local",
       "region": "IN",
@@ -1009,7 +965,7 @@
       "traffic_per_hour": null,
       "aov": null,
       "currency": null,
-      "durationMs": 55054,
+      "durationMs": 51480,
       "business_impact": {
         "currency": "INR",
         "realised_impact_per_hour": 0,

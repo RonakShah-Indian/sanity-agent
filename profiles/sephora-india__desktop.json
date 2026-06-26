@@ -13,16 +13,16 @@
       "selector": "a.navigation.bag:visible",
       "strategy": "override",
       "confidence": 1,
-      "hits": 10,
+      "hits": 3,
       "misses": 0
     },
     "checkout_button": {
       "selector": "button.cart-checkout-btn:visible, button.common-btn:has-text('CHECKOUT'):visible",
       "strategy": "override",
-      "confidence": 1,
-      "hits": 10,
-      "misses": 0
+      "confidence": 0.9999999999999999,
+      "hits": 14,
+      "misses": 1
     }
   },
-  "updatedAt": "2026-06-25T14:29:21.556Z"
+  "updatedAt": "2026-06-26T05:18:02.914Z"
 }
