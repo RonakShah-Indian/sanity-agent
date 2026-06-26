@@ -1,0 +1,120 @@
+[
+  {
+    "id": "pizzahut-malaysia",
+    "url": "https://pizzahut.com.my/",
+    "note": "EXPLICIT SCRIPT: (1) Land on homepage (warms session, lets anti-bot clear) (2) Navigate to /products (3) Navigate to /products/?category_phm=Pizza (4) Click the '+' button on first pizza card (5) Navigate to /cart (6) Verify cart not empty (recognizes 'Added Items (N)' header).",
+    "query": "pizza",
+    "region": "MY",
+    "flows": ["browse_add_to_cart", "checkout"],
+    "overrides": {
+      "selectors": {
+        "add_to_cart": "button[aria-label='Add item']:visible, button[aria-label*='add item' i]:visible",
+        "checkout_button": "button:has-text(/^\\s*Checkout\\s*$/i):visible, a:has-text(/^\\s*Checkout\\s*$/i):visible"
+      },
+      "skipGateDetection": true,
+      "cartUrl": "/cart"
+    },
+    "flowSteps": {
+      "browse_add_to_cart": [
+        { "action": "wait", "ms": 4000, "note": "let homepage settle (any anti-bot interstitial clears)" },
+        { "action": "navigate", "url": "https://pizzahut.com.my/products", "afterWaitMs": 3000, "note": "warm into menu space from homepage" },
+        { "action": "navigate", "url": "https://pizzahut.com.my/products/?category_phm=Pizza", "afterWaitMs": 4000, "note": "deep-link to Pizza category" },
+        { "action": "wait", "ms": 2500, "note": "let product grid hydrate fully" },
+        { "action": "click_until_cart_changes", "intent": "add_to_cart", "maxAttempts": 1 },
+        { "action": "wait", "ms": 2500, "note": "let cart API call complete" },
+        { "action": "navigate", "url": "https://pizzahut.com.my/cart", "afterWaitMs": 2500, "note": "verify by navigating to the real cart URL" },
+        { "action": "assert_cart_not_empty" }
+      ],
+      "checkout": [
+        { "action": "navigate", "url": "https://pizzahut.com.my/cart", "afterWaitMs": 1500 },
+        { "action": "assert_cart_not_empty", "note": "verify cart still has items (don't click checkout — would require login/store)" }
+      ]
+    }
+  },
+  {
+    "id": "sephora-india",
+    "url": "https://sephora.in/products?q=lipstick",
+    "note": "EXPLICIT SCRIPT per user's exact instructions: (1) Land on /products?q=lipstick (2) Hover on first product card (reveals ADD TO BAG) (3) Click ADD TO BAG (4) Navigate to /cart/bag (5) Verify cart not empty.",
+    "query": "lipstick",
+    "region": "IN",
+    "pincode": "110001",
+    "flows": ["browse_add_to_cart", "checkout"],
+    "overrides": {
+      "selectors": {
+        "add_to_cart": "button.common-btn:has-text('ADD TO BAG'):visible, button:has-text(/^\\s*ADD TO BAG\\s*$/i):visible",
+        "cart_link": "a.navigation.bag:visible",
+        "checkout_button": "button.cart-checkout-btn:visible, button.common-btn:has-text('CHECKOUT'):visible"
+      },
+      "noUrlSearch": true,
+      "cartUrl": "/cart/bag"
+    },
+    "flowSteps": {
+      "browse_add_to_cart": [
+        { "action": "wait", "ms": 2500, "note": "let SPA hydrate the listing" },
+        { "action": "hover", "afterWaitMs": 1200, "note": "hover first product card to reveal ADD TO BAG" },
+        { "action": "click_until_cart_changes", "intent": "add_to_cart", "maxAttempts": 1 },
+        { "action": "wait", "ms": 1500 },
+        { "action": "navigate", "url": "https://sephora.in/cart/bag", "afterWaitMs": 2000 },
+        { "action": "assert_cart_not_empty" }
+      ],
+      "checkout": [
+        { "action": "navigate", "url": "https://sephora.in/cart/bag", "afterWaitMs": 1500 },
+        { "action": "click", "intent": "checkout_button" },
+        { "action": "assert_url", "match": "checkout|payment", "soft": true },
+        { "action": "assert_no_payment_charge" }
+      ]
+    }
+  },
+  {
+    "id": "shop-nexus-one",
+    "url": "https://shopnexusone.com/",
+    "note": "Self-healing path that's been stable across runs. The 'checkout' flow here is a CART-VERIFICATION ONLY — shop-nexus-one's actual checkout button is login-gated, so we navigate to /cart/bag and verify items are present rather than clicking through to a login wall.",
+    "query": "bag",
+    "region": "IN",
+    "pincode": "110001",
+    "flows": ["add_to_cart", "checkout"],
+    "discoverPages": true,
+    "discovery": { "maxDepth": 2, "maxPages": 30 },
+    "overrides": {
+      "selectors": {
+        "search_trigger": "button[aria-label='Open search']:visible",
+        "add_to_cart": "button:has-text('Add To Bag'):visible",
+        "cart_link": "a[href='/cart/bag']:visible"
+      },
+      "noUrlSearch": true,
+      "cartUrl": "/cart/bag"
+    },
+    "flowSteps": {
+      "checkout": [
+        { "action": "navigate", "url": "https://shopnexusone.com/cart/bag", "afterWaitMs": 1500 },
+        { "action": "assert_cart_not_empty", "note": "verify item is in cart (checkout itself requires login)" }
+      ]
+    }
+  },
+  {
+    "id": "nykaa-india",
+    "url": "https://www.nykaa.com/",
+    "note": "ITERATION 4: anti-bot warm-up + direct PDP URL. Fresh sessions to /makeup/lips/c/15 serve a degraded listing without product cards rendered; homepage warm-up + direct PDP navigation bypasses the listing-hydration issue. Checkout flow is a load-only check on /shopping-bag because Nykaa's cart doesn't persist anonymously — full cart-persistence verification would require test login credentials.",
+    "query": "lipstick",
+    "region": "IN",
+    "pincode": "110001",
+    "flows": ["add_to_cart", "checkout"],
+    "overrides": {
+      "cartUrl": "/shopping-bag",
+      "noUrlSearch": true
+    },
+    "flowSteps": {
+      "add_to_cart": [
+        { "action": "wait", "ms": 4000, "note": "let homepage settle / cookies set" },
+        { "action": "navigate", "url": "https://www.nykaa.com/maybelline-new-york-serum-matte-lipstick-8hr-hydration/p/24700514", "afterWaitMs": 4000, "note": "deep-link to a known PDP (bypasses the listing-hydration issue)" },
+        { "action": "enter_pincode", "soft": true, "note": "delivery check" },
+        { "action": "click_until_cart_changes", "intent": "add_to_cart", "maxAttempts": 2 },
+        { "action": "assert_cart_not_empty" }
+      ],
+      "checkout": [
+        { "action": "navigate", "url": "https://www.nykaa.com/shopping-bag", "afterWaitMs": 2500 },
+        { "action": "assert_no_error", "note": "Nykaa cart doesn't persist without login (anonymous flow); verify the /shopping-bag URL loads without an error page rather than asserting items. This is the honest deploy-gate check: 'did our bag URL break?' is answerable; 'is there a persisted item?' requires test creds." }
+      ]
+    }
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "__doc__": "Copy this entry, delete the __doc__ key, fill in your values. One object per site. Field reference at the bottom.",
+
+    "id": "example-site",
+    "url": "https://example.com",
+
+    "credentials": { "email": "tester@example.com", "password": "Test1234!" },
+    "query": "shirt",
+
+    "flows": null,
+
+    "viewports": [
+      { "name": "desktop-1440", "viewport": { "width": 1440, "height": 900 } },
+      { "name": "iphone-14",    "device":   "iPhone 14" },
+      { "name": "pixel-7",      "device":   "Pixel 7" },
+      { "name": "ipad-pro",     "device":   "iPad Pro 11" }
+    ],
+
+    "locale": null,
+    "versionUrl": null,
+    "note": "Free-text description of why this site is in the list — surfaces in reports."
+  },
+
+  {
+    "__field_reference__": {
+      "id":          "REQUIRED. Unique slug. Becomes the per-site profile filename (profiles/<id>__<viewport>.json).",
+      "url":         "REQUIRED. The landing URL the agent navigates to first.",
+      "credentials": "Optional. { email, password } — used by sign_in flow. If omitted, sign_in uses test@example.com / Test1234! (will fail on real sites — set real test creds).",
+      "query":       "Optional. Search term used by search_product / add_to_cart flows. Defaults to 'shirt'.",
+      "flows":       "Optional. Array of flow keys (sign_in, search_product, add_to_cart, checkout, food_order, …) overriding the archetype-chosen plan. Leave null to let the classifier choose.",
+      "viewports":   "Optional. Array of viewport configs. Each entry is either { name, viewport:{width,height} } OR { name?, device:'<Playwright device name>' }. If omitted, runs once at 1280x800 desktop. Device names: any string accepted by Playwright's devices map — 'iPhone 14', 'Pixel 7', 'iPad Pro 11', 'Galaxy S9+', 'Desktop Chrome HiDPI', etc.",
+      "locale":      "Optional. Force a locale (e.g. 'es-MX'). If null, locale is auto-detected from <html lang>.",
+      "versionUrl":  "Optional. URL returning a short version string. The poll-mode trigger (serve.sh) watches this and re-runs the site when it changes.",
+      "note":        "Optional. Human-readable context — shows up in reports."
+    },
+
+    "__usage__": [
+      "1. Save your sites as e.g. config/my-sites.json",
+      "2. Test the JSON parses:   jq . config/my-sites.json",
+      "3. One-shot run:           ./run.sh --sites config/my-sites.json --concurrency 4",
+      "4. Long-running daemon:    ./serve.sh --sites config/my-sites.json",
+      "5. Scheduled:              copy a line from cron.example"
+    ]
+  }
+]

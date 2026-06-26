@@ -1,0 +1,54 @@
+## Phase 10 — docker-compose for local production-like deployment.
+##
+##   docker compose up         — boots the agent + (optional) postgres
+##   docker compose run agent npm test
+##   docker compose run agent ./run.sh --sites config/fynd-sites.json
+##
+## Volumes persist the learned state across container restarts.
+
+services:
+  agent:
+    build: .
+    image: sanity-agent:latest
+    container_name: sanity-agent
+    ports:
+      - "8787:8787"
+    environment:
+      QAAGENT_STORAGE: ${QAAGENT_STORAGE:-file}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      SANITY_DASHBOARD_URL: http://localhost:8787
+      DEPLOY_SECRET: ${DEPLOY_SECRET:-}
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL:-}
+    volumes:
+      - ./config:/app/config:ro
+      - agent-profiles:/app/profiles
+      - agent-history:/app/history
+      - agent-baselines:/app/baselines
+      - agent-defects:/app/defects
+      - agent-reports:/app/reports
+      - agent-visual:/app/visual-baselines
+      - agent-data:/app/data
+    restart: unless-stopped
+
+  # OPTIONAL: postgres for when you swap from file backend.
+  # Comment out if you stay on file storage. To enable:
+  #   QAAGENT_STORAGE=postgres docker compose up
+  # postgres:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     POSTGRES_DB: qaagent
+  #     POSTGRES_USER: qaagent
+  #     POSTGRES_PASSWORD: qaagent
+  #   ports: ["5432:5432"]
+  #   volumes:
+  #     - agent-pg:/var/lib/postgresql/data
+
+volumes:
+  agent-profiles:
+  agent-history:
+  agent-baselines:
+  agent-defects:
+  agent-reports:
+  agent-visual:
+  agent-data:
+  # agent-pg:

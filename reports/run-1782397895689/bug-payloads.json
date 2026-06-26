@@ -1,0 +1,156 @@
+{
+  "generatedAt": "2026-06-25T14:31:35.691Z",
+  "dryRun": true,
+  "count": 1,
+  "payloads": {
+    "jira": [
+      {
+        "_endpoint": "POST /rest/api/3/issue",
+        "_dedupeKey": "sephora-india:diff:structure-removed",
+        "fields": {
+          "project": {
+            "key": "QA"
+          },
+          "issuetype": {
+            "name": "Bug"
+          },
+          "summary": "[Deploy regression] sephora-india: structure-removed",
+          "labels": [
+            "qa-agent",
+            "site-sephora-india",
+            "deploy-regression"
+          ],
+          "priority": {
+            "name": "High"
+          },
+          "description": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Site: sephora-india (Fashion / Lifestyle e-commerce)  —  https://sephora.in/products?q=lipstick"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Detected by the autonomous QA agent on the deploy-regression journey."
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 4
+                },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Diagnosis"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "9 interactive element(s) disappeared since last deploy"
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "attrs": {
+                  "level": 4
+                },
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Reproduction"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Flow: - · Step: - · Intent: -"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "slack": [
+      {
+        "_endpoint": "POST chat.postMessage",
+        "_dedupeKey": "sephora-india:diff:structure-removed",
+        "blocks": [
+          {
+            "type": "header",
+            "text": {
+              "type": "plain_text",
+              "text": "🐞 HIGH: sephora-india"
+            }
+          },
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*[Deploy regression] sephora-india: structure-removed*\n9 interactive element(s) disappeared since last deploy"
+            }
+          },
+          {
+            "type": "context",
+            "elements": [
+              {
+                "type": "mrkdwn",
+                "text": "Fashion / Lifestyle e-commerce · deploy-regression · <https://sephora.in/products?q=lipstick|open site>"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "linear": [
+      {
+        "_endpoint": "mutation issueCreate",
+        "_dedupeKey": "sephora-india:diff:structure-removed",
+        "input": {
+          "title": "[Deploy regression] sephora-india: structure-removed",
+          "description": "**Site:** sephora-india\n**Diagnosis:** 9 interactive element(s) disappeared since last deploy\n**Repro:** undefined/undefined",
+          "priority": 1,
+          "labelIds": [
+            "qa-agent"
+          ]
+        }
+      }
+    ],
+    "webhook": [
+      {
+        "_endpoint": "POST {WEBHOOK_URL}",
+        "_dedupeKey": "sephora-india:diff:structure-removed",
+        "body": {
+          "source": "qa-agent",
+          "site": "sephora-india",
+          "severity": "high",
+          "title": "[Deploy regression] sephora-india: structure-removed",
+          "diagnosis": "9 interactive element(s) disappeared since last deploy",
+          "url": "https://sephora.in/products?q=lipstick"
+        }
+      }
+    ]
+  },
+  "posted": {}
+}

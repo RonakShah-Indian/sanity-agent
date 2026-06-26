@@ -1,0 +1,28 @@
+{
+  "siteId": "nykaa-india__desktop",
+  "locale": "en",
+  "intents": {
+    "pincode_input": {
+      "selector": "role=textbox[name=/pincode/i]",
+      "strategy": "role",
+      "confidence": 0.8,
+      "hits": 1,
+      "misses": 0
+    },
+    "pincode_check_button": {
+      "selector": "role=button[name=/check/i]",
+      "strategy": "role",
+      "confidence": 0.8,
+      "hits": 1,
+      "misses": 0
+    },
+    "cart_link": {
+      "selector": "role=button[name=/bag/i]",
+      "strategy": "role",
+      "confidence": 0.8,
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "updatedAt": "2026-06-25T16:27:26.994Z"
+}

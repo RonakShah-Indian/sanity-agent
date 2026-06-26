@@ -1,0 +1,46 @@
+{
+  "__doc__": "Default assumptions for converting test outcomes to business impact. Override per-site by setting traffic_per_hour, aov, region, currency on the site entry.",
+
+  "currency": "INR",
+  "median_traffic_per_hour": 500,
+  "median_aov": 1500,
+
+  "archetype_overrides": {
+    "__doc__": "Median traffic and AOV for each business archetype. Adjusted to Indian commerce realities.",
+    "quick_commerce":  { "traffic_per_hour": 1200, "aov":   600 },
+    "b2b_wholesale":   { "traffic_per_hour":   80, "aov": 25000 },
+    "marketplace":     { "traffic_per_hour":  900, "aov":  1800 },
+    "fashion_retail":  { "traffic_per_hour":  500, "aov":  1500 },
+    "electronics":     { "traffic_per_hour":  400, "aov":  8000 },
+    "food_delivery":   { "traffic_per_hour":  800, "aov":   450 },
+    "saas_console":    { "traffic_per_hour":   50, "aov":     0 }
+  },
+
+  "funnel": {
+    "__doc__": "Per-flow funnel parameters. attemptRate = fraction of hourly visitors who attempt this flow. severity = fraction of those attempts that *fail* when the flow is broken. impact = traffic * attemptRate * aov * severity per hour. Archetype-specific entries override the _default.",
+
+    "_default": {
+      "sign_in":        { "attemptRate": 0.10, "severity": 0.70 },
+      "search_product": { "attemptRate": 0.40, "severity": 0.90 },
+      "add_to_cart":    { "attemptRate": 0.10, "severity": 0.95 },
+      "checkout":       { "attemptRate": 0.02, "severity": 1.00 },
+      "food_order":     { "attemptRate": 0.05, "severity": 1.00 }
+    },
+    "quick_commerce": {
+      "add_to_cart":    { "attemptRate": 0.15, "severity": 0.95 },
+      "checkout":       { "attemptRate": 0.04, "severity": 1.00 }
+    },
+    "b2b_wholesale": {
+      "sign_in":        { "attemptRate": 0.80, "severity": 0.95 },
+      "add_to_cart":    { "attemptRate": 0.25, "severity": 0.95 },
+      "checkout":       { "attemptRate": 0.10, "severity": 1.00 }
+    },
+    "saas_console": {
+      "sign_in":        { "attemptRate": 0.90, "severity": 0.95 },
+      "search_product": { "attemptRate": 0.10, "severity": 0.30 }
+    },
+    "food_delivery": {
+      "food_order":     { "attemptRate": 0.15, "severity": 1.00 }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="sanity-agent" tests="2" failures="1" errors="0" time="5.40">
+    <testcase classname="siteA" name="Add To Cart" time="2.60"></testcase>
+    <testcase classname="siteB" name="Sign In" time="2.80">
+      <failure message="no password field"/>
+    </testcase>
+</testsuite>

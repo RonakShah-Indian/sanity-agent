@@ -1,0 +1,31 @@
+{
+  "__doc__": "Discovery config: one or more sources, merged by id (later sources override). Failures are non-fatal — a flaky source returns nothing and the previous active list is kept.",
+
+  "sources": [
+    {
+      "type": "static",
+      "path": "config/sites.json",
+      "__note__": "Keeps your hand-curated sites in the active set even if no other source finds them."
+    },
+    {
+      "type": "sitemap",
+      "url": "https://www.fynd.com/sitemap.xml",
+      "storePathPattern": "/(store|brand|shop)/",
+      "idFrom": "last-path-segment",
+      "maxEntries": 200,
+      "__note__": "Pulls merchant URLs from a sitemap. Cheapest source — works for any platform that publishes one."
+    },
+    {
+      "type": "tenant-api",
+      "baseUrl": "https://api.fynd.com/v1/tenants",
+      "apiKey": "${FYND_API_KEY}",
+      "__note__": "Drop in the real internal tenant endpoint. The agent expects an array of { id, url, active, themeVersion, ... }. See src/discovery.js for the full contract."
+    }
+  ],
+
+  "__behavior__": {
+    "intervalMs": 300000,
+    "archiveRemoved": true,
+    "__doc__": "intervalMs is read by serve.js — how often to re-discover. archiveRemoved moves a deactivated merchant's learned profiles to profiles/_archive/ instead of deleting them."
+  }
+}

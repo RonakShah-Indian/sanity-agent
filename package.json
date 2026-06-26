@@ -1,0 +1,18 @@
+{
+  "name": "autonomous-sanity-agent",
+  "version": "1.0.0",
+  "description": "AI-assisted, self-learning sanity-testing agent for e-commerce sites at scale",
+  "main": "src/index.js",
+  "scripts": {
+    "setup": "./setup.sh",
+    "start": "./run.sh",
+    "serve": "./serve.sh",
+    "discover": "./discover.sh",
+    "gate": "node src/canary-gate.js",
+    "test": "node test/core.test.js && node test/discovery.test.js && node test/impact.test.js && node test/personas.test.js && node test/health.test.js && node test/patterns.test.js && node test/patterns-precision.test.js && node test/tier1-tier2.test.js && node test/alerter.test.js && node test/page-classifier.test.js && node test/journey-planner.test.js && node test/storage.test.js && node test/bugreporter.test.js && node test/intelligence.test.js && node test/validator.test.js && node test/slo-tracker.test.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "sharp": "^0.35.2"
+  }
+}

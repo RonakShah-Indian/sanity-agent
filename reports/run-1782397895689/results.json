@@ -1,0 +1,1044 @@
+{
+  "summary": {
+    "total": 4,
+    "passed": 0,
+    "degraded": 4,
+    "failed": 0,
+    "errored": 0,
+    "deferred": 0,
+    "durationMs": 232958,
+    "concurrency": 1,
+    "throughputPerMin": 1,
+    "generatedAt": "2026-06-25T14:31:35.686Z",
+    "impact": {
+      "currency": "INR",
+      "total_realised_per_hour": 0,
+      "total_at_risk_per_hour": 294750,
+      "by_archetype": {
+        "food_delivery": 0,
+        "fashion_retail": 0,
+        "marketplace": 0
+      },
+      "by_region": {
+        "MY": 0,
+        "IN": 0
+      },
+      "top_offenders": []
+    },
+    "third_party": {
+      "generatedAt": "2026-06-25T14:31:35.684Z",
+      "providers": {
+        "stripe": {
+          "label": "Stripe",
+          "status": "unknown",
+          "error": "fetch failed",
+          "latencyMs": 12
+        },
+        "razorpay": {
+          "label": "Razorpay",
+          "status": "unknown",
+          "error": "Unexpected token '<', \" <!DOCTYPE \"... is not valid JSON",
+          "latencyMs": 86
+        },
+        "algolia": {
+          "label": "Algolia",
+          "status": "unknown",
+          "error": "Unexpected token '<', \"<!doctype \"... is not valid JSON",
+          "latencyMs": 394
+        },
+        "cloudflare": {
+          "label": "Cloudflare",
+          "latencyMs": 514,
+          "status": "minor",
+          "description": "Minor Service Outage"
+        },
+        "cloudinary": {
+          "label": "Cloudinary",
+          "latencyMs": 517,
+          "status": "operational",
+          "description": "All Systems Operational"
+        },
+        "aws": {
+          "label": "AWS",
+          "status": "operational",
+          "latencyMs": 1261
+        }
+      },
+      "any_degraded": true
+    },
+    "patterns": {
+      "generatedAt": "2026-06-25T14:31:35.689Z",
+      "window_ms": 3600000,
+      "merchants_in_window": 4,
+      "patterns": []
+    },
+    "alerts": {
+      "sent": 0,
+      "suppressed": 0,
+      "errors": 0,
+      "events": 0
+    }
+  },
+  "results": [
+    {
+      "site": "pizzahut-malaysia",
+      "url": "https://pizzahut.com.my/",
+      "startedAt": "2026-06-25T14:27:42.729Z",
+      "finishedAt": "2026-06-25T14:28:43.350Z",
+      "status": "degraded",
+      "error": null,
+      "locale": {
+        "lang": "en",
+        "source": "html-lang",
+        "currency": null
+      },
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": [
+        "browse_add_to_cart",
+        "checkout"
+      ],
+      "business": {
+        "archetype": "food_delivery",
+        "label": "Food ordering / delivery (location-gated)",
+        "confidence": 1,
+        "method": "heuristic"
+      },
+      "flows": [
+        {
+          "flow": "Browse & Add To Cart",
+          "key": "browse_add_to_cart",
+          "critical": true,
+          "steps": [
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let homepage settle (any anti-bot interstitial clears)",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": "warm into menu space from homepage",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": "deep-link to Pizza category",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let product grid hydrate fully",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "click_until_cart_changes",
+              "intent": "add_to_cart",
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let cart API call complete",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": "verify by navigating to the real cart URL",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 51888,
+          "viewport": "desktop"
+        },
+        {
+          "flow": "Checkout (up to payment)",
+          "key": "checkout",
+          "critical": false,
+          "steps": [
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": "verify cart still has items (don't click checkout — would require login/store)",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 4971,
+          "viewport": "desktop"
+        }
+      ],
+      "profiles": {
+        "desktop": {
+          "siteId": "pizzahut-malaysia__desktop",
+          "locale": "en",
+          "learnedIntents": 2,
+          "avgConfidence": 0.25,
+          "byStrategy": {
+            "override": 1,
+            "semantic-text": 1
+          }
+        }
+      },
+      "profile": {
+        "siteId": "pizzahut-malaysia__desktop",
+        "locale": "en",
+        "learnedIntents": 2,
+        "avgConfidence": 0.25,
+        "byStrategy": {
+          "override": 1,
+          "semantic-text": 1
+        }
+      },
+      "personaFindings": [],
+      "telemetry": [
+        {
+          "variant": "desktop",
+          "severity": "medium",
+          "findings": [
+            {
+              "kind": "vitals.lcp",
+              "severity": "medium",
+              "detail": "LCP 2668ms > 2500ms"
+            },
+            {
+              "kind": "vitals.cls",
+              "severity": "medium",
+              "detail": "CLS 0.394 > 0.1"
+            }
+          ],
+          "vitals": {
+            "lcp": 2668,
+            "cls": 0.394,
+            "inp": 40,
+            "fcp": 536,
+            "ttfb": 146
+          },
+          "counts": {
+            "consoleErrors": 0,
+            "pageErrors": 0,
+            "badResponses": 0
+          }
+        }
+      ],
+      "visual": {
+        "desktop": {
+          "diffPercent": 0.4839,
+          "comparable": true,
+          "baseline": "compared",
+          "regressed": true,
+          "threshold": 0.05
+        }
+      },
+      "videos": {},
+      "diff": {
+        "firstRun": true,
+        "changes": [],
+        "severity": "info",
+        "baselineUpdated": false
+      },
+      "transport": "local",
+      "region": "MY",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 60621,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 7200,
+        "inputs": {
+          "traffic_per_hour": 800,
+          "aov": 450,
+          "archetype": "food_delivery",
+          "region": "MY"
+        },
+        "basis": {
+          "trafficSource": "archetype-median",
+          "aovSource": "archetype-median"
+        },
+        "per_flow": [
+          {
+            "flow": "browse_add_to_cart",
+            "status": "passed",
+            "peak_impact_per_hour": 0,
+            "realised_impact_per_hour": 0
+          },
+          {
+            "flow": "checkout",
+            "status": "passed",
+            "peak_impact_per_hour": 7200,
+            "realised_impact_per_hour": 0
+          }
+        ]
+      }
+    },
+    {
+      "site": "sephora-india",
+      "url": "https://sephora.in/products?q=lipstick",
+      "startedAt": "2026-06-25T14:28:43.350Z",
+      "finishedAt": "2026-06-25T14:29:23.617Z",
+      "status": "degraded",
+      "error": null,
+      "locale": {
+        "lang": "en",
+        "source": "html-lang",
+        "currency": "INR"
+      },
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": [
+        "browse_add_to_cart",
+        "checkout"
+      ],
+      "business": {
+        "archetype": "fashion_retail",
+        "label": "Fashion / Lifestyle e-commerce",
+        "confidence": 0.8,
+        "method": "llm"
+      },
+      "flows": [
+        {
+          "flow": "Browse & Add To Cart",
+          "key": "browse_add_to_cart",
+          "critical": true,
+          "steps": [
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let SPA hydrate the listing",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "hover",
+              "intent": null,
+              "note": "hover first product card to reveal ADD TO BAG",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "click_until_cart_changes",
+              "intent": "add_to_cart",
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "wait",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 23215,
+          "viewport": "desktop"
+        },
+        {
+          "flow": "Checkout (up to payment)",
+          "key": "checkout",
+          "critical": false,
+          "steps": [
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "click",
+              "intent": "checkout_button",
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_url",
+              "intent": null,
+              "note": null,
+              "status": "skipped",
+              "reason": "step.match.test is not a function"
+            },
+            {
+              "action": "assert_no_payment_charge",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 3860,
+          "viewport": "desktop"
+        }
+      ],
+      "profiles": {
+        "desktop": {
+          "siteId": "sephora-india__desktop",
+          "locale": "en",
+          "learnedIntents": 3,
+          "avgConfidence": 0.93,
+          "byStrategy": {
+            "role": 1,
+            "override": 2
+          }
+        }
+      },
+      "profile": {
+        "siteId": "sephora-india__desktop",
+        "locale": "en",
+        "learnedIntents": 3,
+        "avgConfidence": 0.93,
+        "byStrategy": {
+          "role": 1,
+          "override": 2
+        }
+      },
+      "personaFindings": [],
+      "telemetry": [
+        {
+          "variant": "desktop",
+          "severity": "high",
+          "findings": [
+            {
+              "kind": "pageerror",
+              "severity": "high",
+              "detail": "5 uncaught JS exception(s)"
+            },
+            {
+              "kind": "console",
+              "severity": "medium",
+              "detail": "10 console error(s)"
+            },
+            {
+              "kind": "http",
+              "severity": "high",
+              "detail": "5 4xx/5xx response(s)"
+            }
+          ],
+          "vitals": {
+            "lcp": 1456,
+            "cls": 0.0752,
+            "inp": 40,
+            "fcp": 256,
+            "ttfb": 106
+          },
+          "counts": {
+            "consoleErrors": 10,
+            "pageErrors": 5,
+            "badResponses": 5
+          }
+        }
+      ],
+      "visual": {
+        "desktop": {
+          "diffPercent": 0.5649,
+          "comparable": true,
+          "baseline": "compared",
+          "regressed": true,
+          "threshold": 0.05
+        }
+      },
+      "videos": {},
+      "diff": {
+        "firstRun": false,
+        "baselineAt": "2026-06-24T10:11:18.435Z",
+        "changeCount": 4,
+        "severity": "high",
+        "changes": [
+          {
+            "type": "flow-status",
+            "flow": "checkout",
+            "from": "failed",
+            "to": "passed",
+            "severity": "info",
+            "note": "checkout: failed -> passed"
+          },
+          {
+            "type": "structure-removed",
+            "count": 9,
+            "examples": [
+              "a:stores & events",
+              "a:wishlist",
+              "a:2\n\nbag",
+              "a:2",
+              "input:search for brands and pr",
+              "button:"
+            ],
+            "severity": "high",
+            "note": "9 interactive element(s) disappeared since last deploy"
+          },
+          {
+            "type": "structure-added",
+            "count": 20,
+            "examples": [
+              "a:https://sephora.in/colle",
+              "input:enter mobile number",
+              "input:on",
+              "a:terms of service,",
+              "a:privacy policy,",
+              "a:beauty pass loyalty prog"
+            ],
+            "severity": "low",
+            "note": "20 new interactive element(s) appeared"
+          },
+          {
+            "type": "currency-change",
+            "from": null,
+            "to": "INR",
+            "severity": "medium",
+            "note": "Currency changed null -> INR"
+          }
+        ],
+        "baselineUpdated": false
+      },
+      "transport": "local",
+      "region": "IN",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 40267,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 15000,
+        "inputs": {
+          "traffic_per_hour": 500,
+          "aov": 1500,
+          "archetype": "fashion_retail",
+          "region": "IN"
+        },
+        "basis": {
+          "trafficSource": "archetype-median",
+          "aovSource": "archetype-median"
+        },
+        "per_flow": [
+          {
+            "flow": "browse_add_to_cart",
+            "status": "passed",
+            "peak_impact_per_hour": 0,
+            "realised_impact_per_hour": 0
+          },
+          {
+            "flow": "checkout",
+            "status": "passed",
+            "peak_impact_per_hour": 15000,
+            "realised_impact_per_hour": 0
+          }
+        ]
+      }
+    },
+    {
+      "site": "shop-nexus-one",
+      "url": "https://shopnexusone.com/",
+      "startedAt": "2026-06-25T14:29:23.617Z",
+      "finishedAt": "2026-06-25T14:30:39.350Z",
+      "status": "degraded",
+      "error": null,
+      "locale": {
+        "lang": "en",
+        "source": "html-lang",
+        "currency": "INR"
+      },
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": [
+        "add_to_cart",
+        "checkout"
+      ],
+      "business": {
+        "archetype": "fashion_retail",
+        "label": "Fashion / Lifestyle e-commerce",
+        "confidence": 1,
+        "method": "heuristic"
+      },
+      "flows": [
+        {
+          "flow": "Add To Cart",
+          "key": "add_to_cart",
+          "critical": true,
+          "steps": [
+            {
+              "action": "type",
+              "intent": "search_box",
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "open_first_product",
+              "intent": null,
+              "note": "click first product card; verifies we landed on a PDP",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "select_variant",
+              "intent": null,
+              "note": "pick first size/shade if PDP has variants",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "enter_pincode",
+              "intent": null,
+              "note": "fill pincode if PDP gates add-to-cart on delivery check",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "click_until_cart_changes",
+              "intent": "add_to_cart",
+              "note": "click an add-to-cart candidate, verify cart actually changed; if not, demote and try another",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": "final sanity check on the cart page",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 18775,
+          "viewport": "desktop"
+        },
+        {
+          "flow": "Checkout (up to payment)",
+          "key": "checkout",
+          "critical": false,
+          "steps": [
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": "verify item is in cart (checkout itself requires login)",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 3985,
+          "viewport": "desktop"
+        }
+      ],
+      "profiles": {
+        "desktop": {
+          "siteId": "shop-nexus-one__desktop",
+          "locale": "en",
+          "learnedIntents": 4,
+          "avgConfidence": 0.78,
+          "byStrategy": {
+            "override": 2,
+            "role": 1,
+            "semantic-text": 1
+          }
+        }
+      },
+      "profile": {
+        "siteId": "shop-nexus-one__desktop",
+        "locale": "en",
+        "learnedIntents": 4,
+        "avgConfidence": 0.78,
+        "byStrategy": {
+          "override": 2,
+          "role": 1,
+          "semantic-text": 1
+        }
+      },
+      "personaFindings": [],
+      "telemetry": [
+        {
+          "variant": "desktop",
+          "severity": "high",
+          "findings": [
+            {
+              "kind": "console",
+              "severity": "medium",
+              "detail": "1 console error(s)"
+            },
+            {
+              "kind": "http",
+              "severity": "high",
+              "detail": "1 4xx/5xx response(s)"
+            }
+          ],
+          "vitals": {
+            "lcp": 1924,
+            "cls": 0.009,
+            "inp": 56,
+            "fcp": 1308,
+            "ttfb": 1010
+          },
+          "counts": {
+            "consoleErrors": 1,
+            "pageErrors": 0,
+            "badResponses": 1
+          }
+        }
+      ],
+      "visual": {
+        "desktop": {
+          "diffPercent": 0.6585,
+          "comparable": true,
+          "baseline": "compared",
+          "regressed": true,
+          "threshold": 0.05
+        }
+      },
+      "videos": {},
+      "diff": {
+        "firstRun": true,
+        "changes": [],
+        "severity": "info",
+        "baselineUpdated": false
+      },
+      "transport": "local",
+      "region": "IN",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 75733,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 86250,
+        "inputs": {
+          "traffic_per_hour": 500,
+          "aov": 1500,
+          "archetype": "fashion_retail",
+          "region": "IN"
+        },
+        "basis": {
+          "trafficSource": "archetype-median",
+          "aovSource": "archetype-median"
+        },
+        "per_flow": [
+          {
+            "flow": "add_to_cart",
+            "status": "passed",
+            "peak_impact_per_hour": 71250,
+            "realised_impact_per_hour": 0
+          },
+          {
+            "flow": "checkout",
+            "status": "passed",
+            "peak_impact_per_hour": 15000,
+            "realised_impact_per_hour": 0
+          }
+        ]
+      }
+    },
+    {
+      "site": "nykaa-india",
+      "url": "https://www.nykaa.com/",
+      "startedAt": "2026-06-25T14:30:39.351Z",
+      "finishedAt": "2026-06-25T14:31:34.405Z",
+      "status": "degraded",
+      "error": null,
+      "locale": {
+        "lang": "en",
+        "source": "html-lang",
+        "currency": "INR"
+      },
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": [
+        "add_to_cart",
+        "checkout"
+      ],
+      "business": {
+        "archetype": "marketplace",
+        "label": "Multi-seller marketplace",
+        "confidence": 1,
+        "method": "heuristic"
+      },
+      "flows": [
+        {
+          "flow": "Add To Cart",
+          "key": "add_to_cart",
+          "critical": true,
+          "steps": [
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let homepage settle / cookies set",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": "deep-link to a known PDP (bypasses the listing-hydration issue)",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "enter_pincode",
+              "intent": null,
+              "note": "delivery check",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "click_until_cart_changes",
+              "intent": "add_to_cart",
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 41753,
+          "viewport": "desktop"
+        },
+        {
+          "flow": "Checkout (up to payment)",
+          "key": "checkout",
+          "critical": false,
+          "steps": [
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_no_error",
+              "intent": null,
+              "note": "Nykaa cart doesn't persist without login (anonymous flow); verify the /shopping-bag URL loads without an error page rather than asserting items. This is the honest deploy-gate check: 'did our bag URL break?' is answerable; 'is there a persisted item?' requires test creds.",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 5094,
+          "viewport": "desktop"
+        }
+      ],
+      "profiles": {
+        "desktop": {
+          "siteId": "nykaa-india__desktop",
+          "locale": "en",
+          "learnedIntents": 3,
+          "avgConfidence": 0.8,
+          "byStrategy": {
+            "role": 3
+          }
+        }
+      },
+      "profile": {
+        "siteId": "nykaa-india__desktop",
+        "locale": "en",
+        "learnedIntents": 3,
+        "avgConfidence": 0.8,
+        "byStrategy": {
+          "role": 3
+        }
+      },
+      "personaFindings": [],
+      "telemetry": [
+        {
+          "variant": "desktop",
+          "severity": "high",
+          "findings": [
+            {
+              "kind": "pageerror",
+              "severity": "high",
+              "detail": "1 uncaught JS exception(s)"
+            },
+            {
+              "kind": "console",
+              "severity": "medium",
+              "detail": "5 console error(s)"
+            },
+            {
+              "kind": "http",
+              "severity": "high",
+              "detail": "2 4xx/5xx response(s)"
+            },
+            {
+              "kind": "vitals.lcp",
+              "severity": "medium",
+              "detail": "LCP 2648ms > 2500ms"
+            }
+          ],
+          "vitals": {
+            "lcp": 2648,
+            "cls": 0,
+            "inp": 24,
+            "fcp": 2428,
+            "ttfb": 445
+          },
+          "counts": {
+            "consoleErrors": 5,
+            "pageErrors": 1,
+            "badResponses": 2
+          }
+        }
+      ],
+      "visual": {
+        "desktop": {
+          "diffPercent": 0.7211,
+          "comparable": true,
+          "baseline": "compared",
+          "regressed": true,
+          "threshold": 0.05
+        }
+      },
+      "videos": {},
+      "diff": {
+        "firstRun": true,
+        "changes": [],
+        "severity": "info",
+        "baselineUpdated": false
+      },
+      "transport": "local",
+      "region": "IN",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 55054,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 186300,
+        "inputs": {
+          "traffic_per_hour": 900,
+          "aov": 1800,
+          "archetype": "marketplace",
+          "region": "IN"
+        },
+        "basis": {
+          "trafficSource": "archetype-median",
+          "aovSource": "archetype-median"
+        },
+        "per_flow": [
+          {
+            "flow": "add_to_cart",
+            "status": "passed",
+            "peak_impact_per_hour": 153900,
+            "realised_impact_per_hour": 0
+          },
+          {
+            "flow": "checkout",
+            "status": "passed",
+            "peak_impact_per_hour": 32400,
+            "realised_impact_per_hour": 0
+          }
+        ]
+      }
+    }
+  ]
+}

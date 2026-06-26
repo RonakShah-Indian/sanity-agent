@@ -1,0 +1,17 @@
+{
+  "__doc__": "Copy to config/alerts.json to enable alerting. Leave the file absent to disable. Secrets stay in .env.local (referenced via *Env fields).",
+
+  "minSeverity": "critical",
+  "cooldownMs": 3600000,
+  "impactAlertThreshold": 1000000,
+
+  "slack": {
+    "__doc__": "Incoming webhook URL. Pull from env so the URL never lives in git.",
+    "webhookUrlEnv": "SLACK_WEBHOOK_URL"
+  },
+
+  "webhook": {
+    "__doc__": "Optional generic JSON POST. Use this for PagerDuty Events v2, Opsgenie, or your own incident receiver.",
+    "urlEnv": "ALERT_WEBHOOK_URL"
+  }
+}

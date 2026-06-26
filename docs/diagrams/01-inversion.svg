@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" font-family="Arial, sans-serif">
+  <rect width="1100" height="620" fill="#0f172a"/>
+  <text x="550" y="44" fill="#f1f5f9" font-size="26" font-weight="700" text-anchor="middle">The Core Inversion — why this scales to 1,000 sites</text>
+  <text x="550" y="72" fill="#94a3b8" font-size="15" text-anchor="middle">Flows describe intent. Elements are resolved at runtime by meaning, not hardcoded per site.</text>
+
+  <!-- LEFT: the old way -->
+  <rect x="40" y="110" width="480" height="470" rx="14" fill="#1e293b" stroke="#7f1d1d" stroke-width="2"/>
+  <text x="280" y="148" fill="#fca5a5" font-size="18" font-weight="700" text-anchor="middle">❌ Per-site scripts (doesn't scale)</text>
+
+  <rect x="70" y="172" width="420" height="58" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="86" y="198" fill="#e2e8f0" font-size="13" font-weight="700">Site A test</text>
+  <text x="86" y="218" fill="#64748b" font-size="12" font-family="monospace">click('.btn-add-cart-v2')</text>
+
+  <rect x="70" y="244" width="420" height="58" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="86" y="270" fill="#e2e8f0" font-size="13" font-weight="700">Site B test</text>
+  <text x="86" y="290" fill="#64748b" font-size="12" font-family="monospace">click('#addToBasket')</text>
+
+  <rect x="70" y="316" width="420" height="58" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="86" y="342" fill="#e2e8f0" font-size="13" font-weight="700">Site C test</text>
+  <text x="86" y="362" fill="#64748b" font-size="12" font-family="monospace">click('[data-cart-add]')</text>
+
+  <text x="280" y="408" fill="#64748b" font-size="22" text-anchor="middle">⋮  × 1,000</text>
+
+  <rect x="70" y="430" width="420" height="130" rx="8" fill="#2a1212" stroke="#7f1d1d"/>
+  <text x="280" y="458" fill="#fca5a5" font-size="14" font-weight="700" text-anchor="middle">The maintenance trap</text>
+  <text x="86" y="486" fill="#cbd5e1" font-size="12.5">• 1,000 scripts to write + maintain</text>
+  <text x="86" y="510" fill="#cbd5e1" font-size="12.5">• every UI tweak breaks a script</text>
+  <text x="86" y="534" fill="#cbd5e1" font-size="12.5">• cost grows linearly with site count</text>
+
+  <!-- arrow -->
+  <text x="555" y="350" fill="#3b82f6" font-size="40" text-anchor="middle">→</text>
+
+  <!-- RIGHT: the new way -->
+  <rect x="590" y="110" width="470" height="470" rx="14" fill="#1e293b" stroke="#14532d" stroke-width="2"/>
+  <text x="825" y="148" fill="#86efac" font-size="18" font-weight="700" text-anchor="middle">✓ One semantic intent (scales flat)</text>
+
+  <rect x="620" y="172" width="410" height="72" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="636" y="198" fill="#e2e8f0" font-size="13" font-weight="700">ONE abstract flow — all sites</text>
+  <text x="636" y="220" fill="#7dd3fc" font-size="12" font-family="monospace">intent: "add first product to cart"</text>
+  <text x="636" y="238" fill="#7dd3fc" font-size="12" font-family="monospace">assert: cart count increased</text>
+
+  <!-- resolver ladder -->
+  <text x="825" y="278" fill="#93c5fd" font-size="13" font-weight="700" text-anchor="middle">resolved at runtime by the strategy ladder ↓</text>
+  <g>
+    <rect x="620" y="294" width="410" height="34" rx="6" fill="#0b1f17" stroke="#14532d"/>
+    <text x="636" y="316" fill="#86efac" font-size="12.5">1 · learned profile (selector that worked before)</text>
+    <rect x="620" y="334" width="410" height="34" rx="6" fill="#0b1f17" stroke="#14532d"/>
+    <text x="636" y="356" fill="#86efac" font-size="12.5">2 · accessibility role + name (robust, localized)</text>
+    <rect x="620" y="374" width="410" height="34" rx="6" fill="#0b1f17" stroke="#14532d"/>
+    <text x="636" y="396" fill="#86efac" font-size="12.5">3 · localized text / placeholder (multilingual)</text>
+    <rect x="620" y="414" width="410" height="34" rx="6" fill="#0b1f17" stroke="#14532d"/>
+    <text x="636" y="436" fill="#86efac" font-size="12.5">4 · structural heuristic (type=password, etc.)</text>
+    <rect x="620" y="454" width="410" height="34" rx="6" fill="#0b1f17" stroke="#1e40af"/>
+    <text x="636" y="476" fill="#93c5fd" font-size="12.5">5 · LLM vision fallback (reads the page) — AI</text>
+  </g>
+
+  <rect x="620" y="502" width="410" height="58" rx="8" fill="#0b1f17" stroke="#14532d"/>
+  <text x="825" y="526" fill="#86efac" font-size="13" font-weight="700" text-anchor="middle">whatever works is cached → next run is instant</text>
+  <text x="825" y="546" fill="#cbd5e1" font-size="12" text-anchor="middle">self-learning + self-healing, cost flat as sites grow</text>
+</svg>

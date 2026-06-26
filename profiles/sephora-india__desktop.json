@@ -1,0 +1,28 @@
+{
+  "siteId": "sephora-india__desktop",
+  "locale": "en",
+  "intents": {
+    "add_to_cart": {
+      "selector": "role=link[name=/add to bag/i]",
+      "strategy": "role",
+      "confidence": 0.8,
+      "hits": 1,
+      "misses": 0
+    },
+    "cart_link": {
+      "selector": "a.navigation.bag:visible",
+      "strategy": "override",
+      "confidence": 1,
+      "hits": 10,
+      "misses": 0
+    },
+    "checkout_button": {
+      "selector": "button.cart-checkout-btn:visible, button.common-btn:has-text('CHECKOUT'):visible",
+      "strategy": "override",
+      "confidence": 1,
+      "hits": 10,
+      "misses": 0
+    }
+  },
+  "updatedAt": "2026-06-25T14:29:21.556Z"
+}

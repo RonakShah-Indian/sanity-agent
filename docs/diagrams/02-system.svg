@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" font-family="Arial, sans-serif">
+  <rect width="1180" height="760" fill="#0f172a"/>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <text x="590" y="42" fill="#f1f5f9" font-size="25" font-weight="700" text-anchor="middle">System Architecture — deploy event to quality verdict in &lt; 5 min</text>
+
+  <!-- Trigger layer -->
+  <rect x="40" y="78" width="300" height="200" rx="12" fill="#172033" stroke="#334155"/>
+  <text x="190" y="106" fill="#7dd3fc" font-size="15" font-weight="700" text-anchor="middle">1 · TRIGGER</text>
+  <rect x="64" y="122" width="252" height="56" rx="8" fill="#0f172a" stroke="#1e40af"/>
+  <text x="190" y="146" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">Deploy webhook (primary)</text>
+  <text x="190" y="165" fill="#94a3b8" font-size="11.5" text-anchor="middle">POST /deploy {version, changed[]}</text>
+  <rect x="64" y="188" width="252" height="50" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="190" y="210" fill="#e2e8f0" font-size="13" font-weight="700" text-anchor="middle">Version poll (fallback)</text>
+  <text x="190" y="228" fill="#94a3b8" font-size="11.5" text-anchor="middle">detects changed sites</text>
+  <text x="190" y="262" fill="#64748b" font-size="11.5" text-anchor="middle">ACKs &lt;100ms · runs async</text>
+
+  <!-- Tiering -->
+  <rect x="380" y="78" width="260" height="200" rx="12" fill="#172033" stroke="#334155"/>
+  <text x="510" y="106" fill="#7dd3fc" font-size="15" font-weight="700" text-anchor="middle">2 · TIERED PLAN</text>
+  <rect x="404" y="122" width="212" height="62" rx="8" fill="#0b1f17" stroke="#14532d"/>
+  <text x="510" y="146" fill="#86efac" font-size="13" font-weight="700" text-anchor="middle">changed sites → FULL</text>
+  <text x="510" y="166" fill="#94a3b8" font-size="11.5" text-anchor="middle">archetype's full flow plan</text>
+  <rect x="404" y="192" width="212" height="62" rx="8" fill="#1f1a0b" stroke="#854d0e"/>
+  <text x="510" y="216" fill="#fde68a" font-size="13" font-weight="700" text-anchor="middle">all others → SMOKE</text>
+  <text x="510" y="236" fill="#94a3b8" font-size="11.5" text-anchor="middle">single highest-weight P0 flow</text>
+
+  <!-- Queue + workers -->
+  <rect x="680" y="78" width="460" height="200" rx="12" fill="#172033" stroke="#334155"/>
+  <text x="910" y="106" fill="#7dd3fc" font-size="15" font-weight="700" text-anchor="middle">3 · SCALE — queue + worker fleet</text>
+  <rect x="704" y="122" width="120" height="44" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="764" y="149" fill="#e2e8f0" font-size="12.5" text-anchor="middle">Queue</text>
+  <text x="764" y="180" fill="#64748b" font-size="10.5" text-anchor="middle">SQS / Kafka</text>
+  <g>
+    <rect x="852" y="118" width="62" height="40" rx="6" fill="#0f172a" stroke="#1e40af"/><text x="883" y="142" fill="#93c5fd" font-size="11" text-anchor="middle">worker</text>
+    <rect x="922" y="118" width="62" height="40" rx="6" fill="#0f172a" stroke="#1e40af"/><text x="953" y="142" fill="#93c5fd" font-size="11" text-anchor="middle">worker</text>
+    <rect x="992" y="118" width="62" height="40" rx="6" fill="#0f172a" stroke="#1e40af"/><text x="1023" y="142" fill="#93c5fd" font-size="11" text-anchor="middle">worker</text>
+    <rect x="1062" y="118" width="56" height="40" rx="6" fill="#0f172a" stroke="#1e40af"/><text x="1090" y="142" fill="#93c5fd" font-size="11" text-anchor="middle">…N</text>
+  </g>
+  <text x="910" y="184" fill="#64748b" font-size="11" text-anchor="middle">autoscaled containers · per-domain rate limit · time budget</text>
+  <rect x="704" y="196" width="414" height="62" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="911" y="220" fill="#e2e8f0" font-size="12.5" font-weight="700" text-anchor="middle">each worker runs the SiteAgent pipeline (below)</text>
+  <text x="911" y="240" fill="#94a3b8" font-size="11" text-anchor="middle">1000 sites · 50 concurrency · &lt;2 min wall (see scale model)</text>
+
+  <!-- arrows top row -->
+  <line x1="340" y1="178" x2="378" y2="178" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="640" y1="178" x2="678" y2="178" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- SiteAgent pipeline -->
+  <rect x="40" y="312" width="1100" height="248" rx="12" fill="#161e2e" stroke="#334155"/>
+  <text x="590" y="340" fill="#a5b4fc" font-size="16" font-weight="700" text-anchor="middle">4 · SiteAgent pipeline (per site, fully autonomous)</text>
+
+  <g font-size="12">
+    <rect x="64" y="360" width="150" height="170" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="139" y="384" fill="#e2e8f0" font-weight="700" text-anchor="middle">Launch + locale</text>
+    <text x="139" y="408" fill="#94a3b8" text-anchor="middle">headless browser</text>
+    <text x="139" y="426" fill="#94a3b8" text-anchor="middle">detect lang +</text>
+    <text x="139" y="442" fill="#94a3b8" text-anchor="middle">currency</text>
+
+    <rect x="234" y="360" width="160" height="170" rx="8" fill="#0f172a" stroke="#1e40af"/>
+    <text x="314" y="384" fill="#93c5fd" font-weight="700" text-anchor="middle">Classify business</text>
+    <text x="314" y="408" fill="#94a3b8" text-anchor="middle">fashion / B2B /</text>
+    <text x="314" y="424" fill="#94a3b8" text-anchor="middle">q-commerce / SaaS</text>
+    <text x="314" y="448" fill="#94a3b8" text-anchor="middle">→ tailored plan</text>
+
+    <rect x="414" y="360" width="160" height="170" rx="8" fill="#0f172a" stroke="#14532d"/>
+    <text x="494" y="384" fill="#86efac" font-weight="700" text-anchor="middle">Resolve + run</text>
+    <text x="494" y="408" fill="#94a3b8" text-anchor="middle">strategy ladder</text>
+    <text x="494" y="424" fill="#94a3b8" text-anchor="middle">per flow step</text>
+    <text x="494" y="448" fill="#94a3b8" text-anchor="middle">(self-healing)</text>
+
+    <rect x="594" y="360" width="170" height="170" rx="8" fill="#0f172a" stroke="#854d0e"/>
+    <text x="679" y="384" fill="#fde68a" font-weight="700" text-anchor="middle">Remediate</text>
+    <text x="679" y="406" fill="#94a3b8" text-anchor="middle">heal → retry →</text>
+    <text x="679" y="422" fill="#94a3b8" text-anchor="middle">quarantine →</text>
+    <text x="679" y="438" fill="#94a3b8" text-anchor="middle">ticket → propose</text>
+    <text x="679" y="458" fill="#94a3b8" text-anchor="middle">(gated)</text>
+
+    <rect x="784" y="360" width="160" height="170" rx="8" fill="#0f172a" stroke="#7c2d92"/>
+    <text x="864" y="384" fill="#e9d5ff" font-weight="700" text-anchor="middle">Diff vs baseline</text>
+    <text x="864" y="408" fill="#94a3b8" text-anchor="middle">flow · structure</text>
+    <text x="864" y="424" fill="#94a3b8" text-anchor="middle">perf · locale</text>
+    <text x="864" y="448" fill="#94a3b8" text-anchor="middle">→ what changed</text>
+
+    <rect x="964" y="360" width="152" height="170" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="1040" y="384" fill="#e2e8f0" font-weight="700" text-anchor="middle">Persist + verdict</text>
+    <text x="1040" y="408" fill="#94a3b8" text-anchor="middle">update profile</text>
+    <text x="1040" y="424" fill="#94a3b8" text-anchor="middle">+ baseline</text>
+    <text x="1040" y="448" fill="#94a3b8" text-anchor="middle">emit result</text>
+  </g>
+  <line x1="214" y1="445" x2="232" y2="445" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="394" y1="445" x2="412" y2="445" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="574" y1="445" x2="592" y2="445" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="764" y1="445" x2="782" y2="445" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="944" y1="445" x2="962" y2="445" stroke="#475569" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- stores + outputs -->
+  <rect x="40" y="592" width="540" height="140" rx="12" fill="#172033" stroke="#334155"/>
+  <text x="310" y="620" fill="#7dd3fc" font-size="15" font-weight="700" text-anchor="middle">5 · STATE (shared)</text>
+  <rect x="64" y="636" width="240" height="76" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="184" y="662" fill="#e2e8f0" font-size="12.5" font-weight="700" text-anchor="middle">Profile store</text>
+  <text x="184" y="682" fill="#94a3b8" font-size="11" text-anchor="middle">learned selectors + confidence</text>
+  <text x="184" y="699" fill="#64748b" font-size="10.5" text-anchor="middle">Redis (hot) + DynamoDB</text>
+  <rect x="316" y="636" width="240" height="76" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="436" y="662" fill="#e2e8f0" font-size="12.5" font-weight="700" text-anchor="middle">Baseline store</text>
+  <text x="436" y="682" fill="#94a3b8" font-size="11" text-anchor="middle">last-healthy fingerprints</text>
+  <text x="436" y="699" fill="#64748b" font-size="10.5" text-anchor="middle">for deployment diffing</text>
+
+  <rect x="620" y="592" width="520" height="140" rx="12" fill="#172033" stroke="#334155"/>
+  <text x="880" y="620" fill="#7dd3fc" font-size="15" font-weight="700" text-anchor="middle">6 · OUTPUTS</text>
+  <rect x="644" y="636" width="150" height="76" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="719" y="668" fill="#e2e8f0" font-size="12" font-weight="700" text-anchor="middle">HTML dashboard</text>
+  <text x="719" y="688" fill="#94a3b8" font-size="10.5" text-anchor="middle">humans</text>
+  <rect x="806" y="636" width="150" height="76" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="881" y="668" fill="#e2e8f0" font-size="12" font-weight="700" text-anchor="middle">JUnit XML</text>
+  <text x="881" y="688" fill="#94a3b8" font-size="10.5" text-anchor="middle">CI gate</text>
+  <rect x="968" y="636" width="150" height="76" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="1043" y="660" fill="#e2e8f0" font-size="12" font-weight="700" text-anchor="middle">Alerts</text>
+  <text x="1043" y="680" fill="#94a3b8" font-size="10.5" text-anchor="middle">Slack / PagerDuty</text>
+  <text x="1043" y="698" fill="#94a3b8" font-size="10.5" text-anchor="middle">on regression</text>
+</svg>

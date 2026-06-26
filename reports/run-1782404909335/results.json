@@ -1,0 +1,673 @@
+{
+  "summary": {
+    "total": 4,
+    "passed": 0,
+    "degraded": 1,
+    "failed": 1,
+    "errored": 2,
+    "deferred": 0,
+    "durationMs": 222536,
+    "concurrency": 1,
+    "throughputPerMin": 1.1,
+    "generatedAt": "2026-06-25T16:28:29.328Z",
+    "impact": {
+      "currency": "INR",
+      "total_realised_per_hour": 7200,
+      "total_at_risk_per_hour": 186300,
+      "by_archetype": {
+        "food_delivery": 7200,
+        "unknown": 0,
+        "marketplace": 0
+      },
+      "by_region": {
+        "MY": 7200,
+        "IN": 0
+      },
+      "top_offenders": [
+        {
+          "site": "pizzahut-malaysia",
+          "archetype": "food_delivery",
+          "region": "MY",
+          "impact_per_hour": 7200
+        }
+      ]
+    },
+    "third_party": {
+      "generatedAt": "2026-06-25T16:28:29.326Z",
+      "providers": {
+        "stripe": {
+          "label": "Stripe",
+          "status": "unknown",
+          "error": "fetch failed",
+          "latencyMs": 265
+        },
+        "cloudflare": {
+          "label": "Cloudflare",
+          "latencyMs": 1432,
+          "status": "minor",
+          "description": "Minor Service Outage"
+        },
+        "algolia": {
+          "label": "Algolia",
+          "status": "unknown",
+          "error": "Unexpected token '<', \"<!doctype \"... is not valid JSON",
+          "latencyMs": 1706
+        },
+        "razorpay": {
+          "label": "Razorpay",
+          "status": "unknown",
+          "error": "Unexpected token '<', \" <!DOCTYPE \"... is not valid JSON",
+          "latencyMs": 1947
+        },
+        "aws": {
+          "label": "AWS",
+          "status": "operational",
+          "latencyMs": 2694
+        },
+        "cloudinary": {
+          "label": "Cloudinary",
+          "latencyMs": 3850,
+          "status": "operational",
+          "description": "All Systems Operational"
+        }
+      },
+      "any_degraded": true
+    },
+    "patterns": {
+      "generatedAt": "2026-06-25T16:28:29.335Z",
+      "window_ms": 3600000,
+      "merchants_in_window": 4,
+      "patterns": []
+    },
+    "alerts": {
+      "sent": 0,
+      "suppressed": 0,
+      "errors": 0,
+      "events": 0
+    }
+  },
+  "results": [
+    {
+      "site": "pizzahut-malaysia",
+      "url": "https://pizzahut.com.my/",
+      "startedAt": "2026-06-25T16:24:46.793Z",
+      "finishedAt": "2026-06-25T16:26:24.603Z",
+      "status": "failed",
+      "error": null,
+      "locale": {
+        "lang": "en",
+        "source": "html-lang",
+        "currency": null
+      },
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": [
+        "browse_add_to_cart",
+        "checkout"
+      ],
+      "business": {
+        "archetype": "food_delivery",
+        "label": "Food ordering / delivery (location-gated)",
+        "confidence": 1,
+        "method": "heuristic"
+      },
+      "flows": [
+        {
+          "flow": "Browse & Add To Cart",
+          "key": "browse_add_to_cart",
+          "critical": true,
+          "steps": [
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let homepage settle (any anti-bot interstitial clears)",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": "warm into menu space from homepage",
+              "status": "failed",
+              "attempts": 3,
+              "error": "page.goto: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://pizzahut.com.my/products\", waiting until \"domcontentloaded\"\u001b[22m\n",
+              "remediation": {
+                "ticket": {
+                  "title": "[Sanity] Browse & Add To Cart failed at \"navigate\" (-)",
+                  "severity": "high",
+                  "diagnosis": "Heuristic diagnosis: step \"navigate\" for intent \"-\" failed (page.goto: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://pizzahut.com.my/products\", waiting until \"domcontentloaded\"\u001b[22m\n). Most likely the element was missing, hidden, or renamed on this site.",
+                  "narrative": "Page state: Pizza Hut Malaysia | Our Menu (https://pizzahut.com.my/products). No obvious blocker pattern detected.",
+                  "snapshot": {
+                    "url": "https://pizzahut.com.my/products",
+                    "title": "Pizza Hut Malaysia | Our Menu",
+                    "modals": []
+                  },
+                  "repro": {
+                    "flow": "browse_add_to_cart",
+                    "step": {
+                      "action": "navigate",
+                      "url": "https://pizzahut.com.my/products",
+                      "afterWaitMs": 3000,
+                      "note": "warm into menu space from homepage"
+                    }
+                  }
+                },
+                "proposedFix": null
+              }
+            }
+          ],
+          "status": "failed",
+          "failedStep": {
+            "action": "navigate",
+            "intent": null,
+            "note": "warm into menu space from homepage",
+            "status": "failed",
+            "attempts": 3,
+            "error": "page.goto: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://pizzahut.com.my/products\", waiting until \"domcontentloaded\"\u001b[22m\n",
+            "remediation": {
+              "ticket": {
+                "title": "[Sanity] Browse & Add To Cart failed at \"navigate\" (-)",
+                "severity": "high",
+                "diagnosis": "Heuristic diagnosis: step \"navigate\" for intent \"-\" failed (page.goto: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://pizzahut.com.my/products\", waiting until \"domcontentloaded\"\u001b[22m\n). Most likely the element was missing, hidden, or renamed on this site.",
+                "narrative": "Page state: Pizza Hut Malaysia | Our Menu (https://pizzahut.com.my/products). No obvious blocker pattern detected.",
+                "snapshot": {
+                  "url": "https://pizzahut.com.my/products",
+                  "title": "Pizza Hut Malaysia | Our Menu",
+                  "modals": []
+                },
+                "repro": {
+                  "flow": "browse_add_to_cart",
+                  "step": {
+                    "action": "navigate",
+                    "url": "https://pizzahut.com.my/products",
+                    "afterWaitMs": 3000,
+                    "note": "warm into menu space from homepage"
+                  }
+                }
+              },
+              "proposedFix": null
+            }
+          },
+          "timingMs": 29832,
+          "viewport": "desktop"
+        },
+        {
+          "flow": "Checkout (up to payment)",
+          "key": "checkout",
+          "critical": false,
+          "steps": [
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": "verify cart still has items (don't click checkout — would require login/store)",
+              "status": "failed",
+              "attempts": 3,
+              "error": "cart page shows no items — add-to-cart did not stick",
+              "remediation": {
+                "ticket": {
+                  "title": "[Sanity] Checkout (up to payment) failed at \"assert_cart_not_empty\" (-)",
+                  "severity": "medium",
+                  "diagnosis": "Heuristic diagnosis: step \"assert_cart_not_empty\" for intent \"-\" failed (cart page shows no items — add-to-cart did not stick). Most likely the element was missing, hidden, or renamed on this site.",
+                  "narrative": "Page state: The Best Deals Only at Pizza Hut Malaysia (https://pizzahut.com.my/cart). No obvious blocker pattern detected.",
+                  "snapshot": {
+                    "url": "https://pizzahut.com.my/cart",
+                    "title": "The Best Deals Only at Pizza Hut Malaysia",
+                    "modals": []
+                  },
+                  "repro": {
+                    "flow": "checkout",
+                    "step": {
+                      "action": "assert_cart_not_empty",
+                      "note": "verify cart still has items (don't click checkout — would require login/store)"
+                    }
+                  }
+                },
+                "proposedFix": null
+              }
+            }
+          ],
+          "status": "failed",
+          "failedStep": {
+            "action": "assert_cart_not_empty",
+            "intent": null,
+            "note": "verify cart still has items (don't click checkout — would require login/store)",
+            "status": "failed",
+            "attempts": 3,
+            "error": "cart page shows no items — add-to-cart did not stick",
+            "remediation": {
+              "ticket": {
+                "title": "[Sanity] Checkout (up to payment) failed at \"assert_cart_not_empty\" (-)",
+                "severity": "medium",
+                "diagnosis": "Heuristic diagnosis: step \"assert_cart_not_empty\" for intent \"-\" failed (cart page shows no items — add-to-cart did not stick). Most likely the element was missing, hidden, or renamed on this site.",
+                "narrative": "Page state: The Best Deals Only at Pizza Hut Malaysia (https://pizzahut.com.my/cart). No obvious blocker pattern detected.",
+                "snapshot": {
+                  "url": "https://pizzahut.com.my/cart",
+                  "title": "The Best Deals Only at Pizza Hut Malaysia",
+                  "modals": []
+                },
+                "repro": {
+                  "flow": "checkout",
+                  "step": {
+                    "action": "assert_cart_not_empty",
+                    "note": "verify cart still has items (don't click checkout — would require login/store)"
+                  }
+                }
+              },
+              "proposedFix": null
+            }
+          },
+          "timingMs": 32825,
+          "viewport": "desktop"
+        }
+      ],
+      "profiles": {
+        "desktop": {
+          "siteId": "pizzahut-malaysia__desktop",
+          "locale": "en",
+          "learnedIntents": 1,
+          "avgConfidence": 0.2,
+          "byStrategy": {
+            "override": 1
+          }
+        }
+      },
+      "profile": {
+        "siteId": "pizzahut-malaysia__desktop",
+        "locale": "en",
+        "learnedIntents": 1,
+        "avgConfidence": 0.2,
+        "byStrategy": {
+          "override": 1
+        }
+      },
+      "personaFindings": [],
+      "telemetry": [
+        {
+          "variant": "desktop",
+          "severity": "ok",
+          "findings": [],
+          "vitals": {
+            "lcp": null,
+            "cls": 0,
+            "inp": null,
+            "fcp": null,
+            "ttfb": 282
+          },
+          "counts": {
+            "consoleErrors": 0,
+            "pageErrors": 0,
+            "badResponses": 0
+          }
+        }
+      ],
+      "visual": {
+        "desktop": {
+          "error": "page.screenshot: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n",
+          "comparable": false,
+          "regressed": false
+        }
+      },
+      "videos": {},
+      "diff": {
+        "firstRun": true,
+        "changes": [],
+        "severity": "info",
+        "baselineUpdated": false
+      },
+      "transport": "local",
+      "region": "MY",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 97810,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 7200,
+        "at_risk_impact_per_hour": 0,
+        "inputs": {
+          "traffic_per_hour": 800,
+          "aov": 450,
+          "archetype": "food_delivery",
+          "region": "MY"
+        },
+        "basis": {
+          "trafficSource": "archetype-median",
+          "aovSource": "archetype-median"
+        },
+        "per_flow": [
+          {
+            "flow": "browse_add_to_cart",
+            "status": "failed",
+            "peak_impact_per_hour": 0,
+            "realised_impact_per_hour": 0
+          },
+          {
+            "flow": "checkout",
+            "status": "failed",
+            "peak_impact_per_hour": 7200,
+            "realised_impact_per_hour": 7200
+          }
+        ]
+      }
+    },
+    {
+      "site": "sephora-india",
+      "url": "https://sephora.in/products?q=lipstick",
+      "startedAt": "2026-06-25T16:26:24.603Z",
+      "finishedAt": "2026-06-25T16:26:45.244Z",
+      "status": "error",
+      "error": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://sephora.in/products?q=lipstick\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "locale": null,
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": null,
+      "business": null,
+      "flows": [],
+      "profiles": {},
+      "profile": null,
+      "personaFindings": [],
+      "telemetry": [],
+      "visual": {},
+      "videos": {},
+      "diff": null,
+      "transport": "local",
+      "region": "IN",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 20641,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 0,
+        "inputs": {
+          "traffic_per_hour": 500,
+          "aov": 1500,
+          "archetype": "unknown",
+          "region": "IN"
+        },
+        "basis": {
+          "trafficSource": "global-median",
+          "aovSource": "global-median"
+        },
+        "per_flow": []
+      }
+    },
+    {
+      "site": "shop-nexus-one",
+      "url": "https://shopnexusone.com/",
+      "startedAt": "2026-06-25T16:26:45.244Z",
+      "finishedAt": "2026-06-25T16:27:05.794Z",
+      "status": "error",
+      "error": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://shopnexusone.com/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "locale": null,
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": null,
+      "business": null,
+      "flows": [],
+      "profiles": {},
+      "profile": null,
+      "personaFindings": [],
+      "telemetry": [],
+      "visual": {},
+      "videos": {},
+      "diff": null,
+      "transport": "local",
+      "region": "IN",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 20550,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 0,
+        "inputs": {
+          "traffic_per_hour": 500,
+          "aov": 1500,
+          "archetype": "unknown",
+          "region": "IN"
+        },
+        "basis": {
+          "trafficSource": "global-median",
+          "aovSource": "global-median"
+        },
+        "per_flow": []
+      }
+    },
+    {
+      "site": "nykaa-india",
+      "url": "https://www.nykaa.com/",
+      "startedAt": "2026-06-25T16:27:05.794Z",
+      "finishedAt": "2026-06-25T16:28:25.466Z",
+      "status": "degraded",
+      "error": null,
+      "locale": {
+        "lang": "en",
+        "source": "html-lang",
+        "currency": "INR"
+      },
+      "viewports": [
+        "desktop"
+      ],
+      "personas": [],
+      "tier": "full",
+      "plan": [
+        "add_to_cart",
+        "checkout"
+      ],
+      "business": {
+        "archetype": "marketplace",
+        "label": "Multi-seller marketplace",
+        "confidence": 0.8,
+        "method": "heuristic"
+      },
+      "flows": [
+        {
+          "flow": "Add To Cart",
+          "key": "add_to_cart",
+          "critical": true,
+          "steps": [
+            {
+              "action": "wait",
+              "intent": null,
+              "note": "let homepage settle / cookies set",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": "deep-link to a known PDP (bypasses the listing-hydration issue)",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "enter_pincode",
+              "intent": null,
+              "note": "delivery check",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "click_until_cart_changes",
+              "intent": "add_to_cart",
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            },
+            {
+              "action": "assert_cart_not_empty",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 46444,
+          "viewport": "desktop"
+        },
+        {
+          "flow": "Checkout (up to payment)",
+          "key": "checkout",
+          "critical": false,
+          "steps": [
+            {
+              "action": "navigate",
+              "intent": null,
+              "note": null,
+              "status": "passed",
+              "attempts": 2,
+              "healed": true
+            },
+            {
+              "action": "assert_no_error",
+              "intent": null,
+              "note": "Nykaa cart doesn't persist without login (anonymous flow); verify the /shopping-bag URL loads without an error page rather than asserting items. This is the honest deploy-gate check: 'did our bag URL break?' is answerable; 'is there a persisted item?' requires test creds.",
+              "status": "passed",
+              "attempts": 1,
+              "healed": false
+            }
+          ],
+          "status": "passed",
+          "timingMs": 13618,
+          "viewport": "desktop"
+        }
+      ],
+      "profiles": {
+        "desktop": {
+          "siteId": "nykaa-india__desktop",
+          "locale": "en",
+          "learnedIntents": 3,
+          "avgConfidence": 0.8,
+          "byStrategy": {
+            "role": 3
+          }
+        }
+      },
+      "profile": {
+        "siteId": "nykaa-india__desktop",
+        "locale": "en",
+        "learnedIntents": 3,
+        "avgConfidence": 0.8,
+        "byStrategy": {
+          "role": 3
+        }
+      },
+      "personaFindings": [],
+      "telemetry": [
+        {
+          "variant": "desktop",
+          "severity": "high",
+          "findings": [
+            {
+              "kind": "pageerror",
+              "severity": "high",
+              "detail": "1 uncaught JS exception(s)"
+            },
+            {
+              "kind": "console",
+              "severity": "medium",
+              "detail": "6 console error(s)"
+            },
+            {
+              "kind": "http",
+              "severity": "high",
+              "detail": "4 4xx/5xx response(s)"
+            }
+          ],
+          "vitals": {
+            "lcp": 2124,
+            "cls": 0,
+            "inp": 24,
+            "fcp": 2124,
+            "ttfb": 2055
+          },
+          "counts": {
+            "consoleErrors": 6,
+            "pageErrors": 1,
+            "badResponses": 4
+          }
+        }
+      ],
+      "visual": {
+        "desktop": {
+          "error": "page.screenshot: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n",
+          "comparable": false,
+          "regressed": false
+        }
+      },
+      "videos": {},
+      "diff": {
+        "firstRun": true,
+        "changes": [],
+        "severity": "info",
+        "baselineUpdated": false
+      },
+      "transport": "local",
+      "region": "IN",
+      "themeVersion": null,
+      "traffic_per_hour": null,
+      "aov": null,
+      "currency": null,
+      "durationMs": 79672,
+      "business_impact": {
+        "currency": "INR",
+        "realised_impact_per_hour": 0,
+        "at_risk_impact_per_hour": 186300,
+        "inputs": {
+          "traffic_per_hour": 900,
+          "aov": 1800,
+          "archetype": "marketplace",
+          "region": "IN"
+        },
+        "basis": {
+          "trafficSource": "archetype-median",
+          "aovSource": "archetype-median"
+        },
+        "per_flow": [
+          {
+            "flow": "add_to_cart",
+            "status": "passed",
+            "peak_impact_per_hour": 153900,
+            "realised_impact_per_hour": 0
+          },
+          {
+            "flow": "checkout",
+            "status": "passed",
+            "peak_impact_per_hour": 32400,
+            "realised_impact_per_hour": 0
+          }
+        ]
+      }
+    }
+  ]
+}

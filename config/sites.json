@@ -1,0 +1,7 @@
+[
+  { "id": "saucedemo", "url": "https://www.saucedemo.com",
+    "credentials": { "email": "standard_user", "password": "secret_sauce" },
+    "query": "backpack", "flows": ["sign_in", "add_to_cart"] },
+  { "id": "automationexercise", "url": "https://automationexercise.com",
+    "query": "dress", "flows": ["search_product", "add_to_cart"] }
+]

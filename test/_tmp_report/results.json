@@ -1,0 +1,76 @@
+{
+  "summary": {
+    "total": 2,
+    "passed": 1,
+    "degraded": 0,
+    "failed": 1,
+    "errored": 0,
+    "deferred": 0,
+    "durationMs": 5400,
+    "concurrency": 3,
+    "throughputPerMin": 22.2,
+    "generatedAt": "2026-06-25T16:07:16.623Z"
+  },
+  "results": [
+    {
+      "site": "siteA",
+      "url": "https://a.com",
+      "status": "passed",
+      "durationMs": 2600,
+      "locale": {
+        "lang": "en",
+        "currency": "USD"
+      },
+      "profile": {
+        "learnedIntents": 4,
+        "avgConfidence": 0.82
+      },
+      "flows": [
+        {
+          "flow": "Add To Cart",
+          "status": "passed",
+          "steps": []
+        }
+      ]
+    },
+    {
+      "site": "siteB",
+      "url": "https://b.es",
+      "status": "failed",
+      "durationMs": 2800,
+      "locale": {
+        "lang": "es",
+        "currency": "EUR"
+      },
+      "profile": {
+        "learnedIntents": 2,
+        "avgConfidence": 0.4
+      },
+      "flows": [
+        {
+          "flow": "Sign In",
+          "status": "failed",
+          "failedStep": {
+            "error": "no password field"
+          },
+          "steps": [
+            {
+              "action": "type",
+              "intent": "password_field",
+              "remediation": {
+                "ticket": {
+                  "title": "[Sanity] Sign In failed at \"type\" (password_field)",
+                  "diagnosis": "Password field not found; likely behind a 2-step email-first form."
+                },
+                "proposedFix": {
+                  "candidate": "text=/contraseña/i",
+                  "requiresApproval": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

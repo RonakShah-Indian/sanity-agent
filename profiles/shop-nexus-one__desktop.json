@@ -1,0 +1,35 @@
+{
+  "siteId": "shop-nexus-one__desktop",
+  "locale": "en",
+  "intents": {
+    "cart_link": {
+      "selector": "a[href='/cart/bag']:visible",
+      "strategy": "override",
+      "confidence": 1,
+      "hits": 20,
+      "misses": 0
+    },
+    "search_box": {
+      "selector": "role=textbox[name=/search/i]",
+      "strategy": "role",
+      "confidence": 0.8,
+      "hits": 1,
+      "misses": 0
+    },
+    "pincode_input": {
+      "selector": "text~=/zip/i",
+      "strategy": "semantic-text",
+      "confidence": 0.29999999999999993,
+      "hits": 2,
+      "misses": 1
+    },
+    "add_to_cart": {
+      "selector": "button:has-text('Add To Bag'):visible",
+      "strategy": "override",
+      "confidence": 1,
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "updatedAt": "2026-06-25T14:30:37.784Z"
+}

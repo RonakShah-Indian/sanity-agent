@@ -1,0 +1,14 @@
+{
+  "siteId": "pizzahut-malaysia__desktop",
+  "locale": "en",
+  "intents": {
+    "add_to_cart": {
+      "selector": "button[aria-label='Add item']:visible, button[aria-label*='add item' i]:visible",
+      "strategy": "override",
+      "confidence": 0.19999999999999984,
+      "hits": 6,
+      "misses": 3
+    }
+  },
+  "updatedAt": "2026-06-25T14:28:41.704Z"
+}

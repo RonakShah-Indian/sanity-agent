@@ -1,0 +1,13 @@
+# Cron snippets — pick one, paste into `crontab -e`.
+# Paths are absolute so cron's minimal $PATH doesn't matter.
+
+# 1) Every 15 minutes, default site list, log to a rotating file
+*/15 * * * * /Users/ronakshah/Downloads/sanity-agent/run.sh --concurrency 4 --time 600000 >> /tmp/sanity-agent.log 2>&1
+
+# 2) Hourly, Fynd archetypes only
+0 * * * * /Users/ronakshah/Downloads/sanity-agent/run.sh --sites config/fynd-sites.json --concurrency 3 --time 600000 >> /tmp/sanity-agent.log 2>&1
+
+# Notes:
+#  - run.sh auto-sources .env.local, so ANTHROPIC_API_KEY is picked up automatically.
+#  - Each run writes a fresh report under reports/run-<ts>/. Add a cleanup cron if you keep many.
+#  - On macOS, you may need to grant cron Full Disk Access (System Settings > Privacy & Security).
